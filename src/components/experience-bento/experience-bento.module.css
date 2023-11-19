@@ -1,0 +1,122 @@
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 4fr 3fr 1fr;
+    grid-template-areas:
+        "bento1 bento3 bento4"
+        "bento2 bento3 bento4"
+        "bento2 bento3 bento5";
+    gap: 20px;
+    padding: 20px;
+}
+
+.bento {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid var(--primary-dark);
+    background: #1E1E1E;
+    padding: 20px;
+}
+
+.bento1 {
+    composes: bento;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-area: bento1;
+}
+
+.bento1 h2 {
+    font-size: 6.25rem;
+    margin: 0;
+    font-weight: 400;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bento1 h2 span {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: 400;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bento1 p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 20px;
+    line-height: 150%;
+}
+
+.bento2 {
+    composes: bento1;
+    grid-area: bento2 !important;
+}
+
+.bento3 {
+    composes: bento;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-area: bento3;
+}
+
+.company h2,
+.company p,
+.bento4 p {
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 150%;
+}
+
+.divider {
+    height: 1px;
+    width: 80%;
+    background-color: var(--primary);
+}
+
+.company h2 {
+    color: var(--primary);
+}
+
+.bento4 {
+    composes: bento;
+    grid-area: bento4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bento5 {
+    display: flex !important;
+    composes: primaryButton from '../../shared/shared.module.css';
+    grid-area: bento5;
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+            "bento1 bento2"
+            "bento3 bento3"
+            "bento4 bento4" 
+            "bento5 bento5";
+    }
+
+    .bento5 {
+        display: inline-flex !important;
+    }
+}

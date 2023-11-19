@@ -1,0 +1,148 @@
+/* NAVBAR STYLING STARTS */
+.container {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    background-color: none;
+    transition: all 0.5s ease;
+}
+
+.containerDark {
+    composes: container;
+    background-color: #1F232E;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.navbar {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    color: #fff;
+    max-width: 1024px;
+    width: 100%;
+}
+
+.logoLink {}
+
+.logoLink img {
+    width: 65px;
+    height: 65px;
+}
+
+.navbar a {
+    text-decoration: none;
+}
+
+.navLinks {
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.navLinks a {
+    color: #fff;
+    position: relative;
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #00eeff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.navLink:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* NAVBAR MENU */
+.menu {
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+
+.menuMobile {
+    composes: menu;
+    display: none;
+}
+
+.menu li {
+    list-style: none;
+    padding: 15px 14px;
+}
+
+.hamburgerCheckbox {
+    display: none;
+}
+
+/* HAMBURGER MENU */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    user-select: none;
+    padding: 0px 20px;
+    align-self: stretch;
+    align-items: center;
+}
+
+.scrollButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--primary);
+    filter: drop-shadow(0px 0px 6.5px #0EF);
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.scrollButton svg {
+    position: absolute;
+}
+
+/* APPLYING MEDIA QUERIES */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        left: 0;
+        text-align: center;
+    }
+
+    .menuMobile {
+        composes: menu;
+        display: block;
+    }
+
+    .menu li {
+        background-color: #000000f3;
+    }
+
+    .menu li:hover {
+        transition: 0.3s ease;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}

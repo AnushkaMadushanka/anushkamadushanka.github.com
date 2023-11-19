@@ -1,0 +1,46 @@
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.section {
+    padding: 50px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100% !important;
+    max-height: 800px;
+}
+
+.hero canvas {
+    max-width: 100% !important;
+}
+
+.content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.25rem;
+    line-height: 150%; /* 30px */
+}
+
+@media (max-width: 768px) {
+    .section {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        height: 250px;
+        order: -1;
+    }
+}
