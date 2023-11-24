@@ -11,7 +11,7 @@ function Background() {
 		<Particles
 			options={{
 				fullScreen: {
-					zIndex: -1,
+					zIndex: -1000,
 				},
 				particles: {
 					number: {

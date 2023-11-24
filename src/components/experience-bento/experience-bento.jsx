@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 function ExperienceBento() {
 	const variants = {
-		rest: { scale: 0 },
+		rest: { scale: 0.8 },
 		inView: { scale: 1 },
 	}
 	const animations = (delay) => ({
-		transition: { type: 'spring', duration: 0.4, delay: delay },
+		transition: { type: 'spring', duration: 0.8, delay: delay },
 		variants: variants,
 	});
 	return (
