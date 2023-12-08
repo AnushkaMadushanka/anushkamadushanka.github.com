@@ -67,7 +67,7 @@
     padding: 10px 15px;
     border-radius: 9px;
     border: 1px solid #FFF;
-    background: #1F232E;
+    background-color: var(--background);
     margin-top: 5px;
 }
 

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import GradPhoto from "../../assets/grad.jpg";
+import GradPhoto from "../../assets/grad.webp";
 import sharedStyles from "../../shared/shared.module.css";
 import styles from "./my-story.module.css";
 import { Link } from "react-router-dom";

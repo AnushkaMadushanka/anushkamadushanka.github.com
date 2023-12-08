@@ -4,10 +4,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import Background from "../../components/background/background";
 import Navigation from "../../components/navigation/navigation";
 import styles from "./app.module.css";
-import Home from "../home/home";
-import About from "../about/about";
 import Logo from "../../assets/logo.svg";
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
+import ArVisuals from "../ar-visuals/ar-visuals";
+
+const Home = lazy(() => import("../home/home"));
+const About = lazy(() => import("../about/about"));
 
 const router = createBrowserRouter([
 	{
@@ -24,17 +26,29 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: "/",
-				element: <Home />,
+				element: (
+					<Suspense fallback={<div>Loading...</div>}>
+						<Home />
+					</Suspense>
+				),
 			},
 			{
 				path: "/about",
-				element: <About />,
+				element: (
+					<Suspense fallback={<div>Loading...</div>}>
+						<About />
+					</Suspense>
+				),
 			},
 			{
 				path: "*",
 				element: <div>404</div>,
 			},
 		],
+	},
+	{
+		path: "/ar",
+		element: <ArVisuals />,
 	},
 ]);
 

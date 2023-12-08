@@ -46,6 +46,8 @@ function Hero() {
 				>
 					<motion.a
 						href="/"
+						target="_blank"
+						alt="resume"
 						className={styles.btn}
 						whileHover={{
 							scale: 1.1,
@@ -58,6 +60,7 @@ function Hero() {
 					<motion.a
 						href="https://www.linkedin.com/in/anushka-madushanka/"
 						target="_blank"
+						alt="linkedin"
 						className={styles.btn}
 						whileHover={{
 							scale: 1.1,
@@ -70,6 +73,7 @@ function Hero() {
 					<motion.a
 						href="https://github.com/AnushkaMadushanka/"
 						target="_blank"
+						alt="github"
 						className={styles.btn}
 						whileHover={{
 							scale: 1.1,
