@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { HashLink } from 'react-router-hash-link';
 import { FaBars } from "react-icons/fa";
 import { AiOutlineArrowUp, AiOutlineClose } from "react-icons/ai";
-import Logo from "../../assets/logo.svg";
 import styles from "./navigation.module.css";
 import { Link } from "react-router-dom";
 
@@ -81,7 +80,7 @@ function Navigation() {
 			<div className={scrolled || hamburgerOpen ? styles.containerDark : styles.container}>
 				<nav className={styles.navbar} role="navigation">
 					<Link to="/" className={styles.logoLink}>
-						<img src={Logo} alt="logo" />
+						<img src="/logo.svg" alt="logo" />
 					</Link>
 
 					<ul className={styles.navLinks}>

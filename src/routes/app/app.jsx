@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import styles from "./app.module.css";
-import Logo from "../../assets/logo.svg";
 import {
 	Suspense,
 	createContext,
@@ -109,7 +108,7 @@ function App() {
 		<>
 			{loading && (
 				<div className={styles.loading}>
-					<img src={Logo} alt="logo" />
+					<img src="/logo.svg" alt="logo" />
 				</div>
 			)}
 			<LoadingContext.Provider value={{ loading, setLoading: setLoadingFunc }}>
