@@ -2,7 +2,6 @@ import { motion, useInView } from "framer-motion";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import emailjs from "@emailjs/browser";
-// import Waving from "../../assets/waving.png";
 import styles from "./contact.module.css";
 import Waving from "./waving";
 import { useRef } from "react";
