@@ -110,7 +110,11 @@ function Projects() {
 					>
 						<div className={styles.main}>
 							<div className={styles.projectImage}>
-								<img src={project.staticImageUrl} alt={project.title} />
+								<img
+									src={project.staticImageUrl}
+									alt={project.title}
+									loading="lazy"
+								/>
 							</div>
 							<div className={styles.projectInfo}>
 								<h2>{project.title}</h2>

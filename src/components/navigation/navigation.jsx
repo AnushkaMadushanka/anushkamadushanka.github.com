@@ -79,7 +79,7 @@ function Navigation() {
 	return (
 		<>
 			<div className={scrolled || hamburgerOpen ? styles.containerDark : styles.container}>
-				<nav className={styles.navbar}>
+				<nav className={styles.navbar} role="navigation">
 					<Link to="/" className={styles.logoLink}>
 						<img src={Logo} alt="logo" />
 					</Link>

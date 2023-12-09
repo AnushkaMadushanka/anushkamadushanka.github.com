@@ -11,41 +11,41 @@ const testimonials = [
 		job_title: "CEO at TechSolutions Inc.",
 		testimonial:
 			"Anushka's expertise as a full stack developer has been invaluable to our projects. His attention to detail and problem-solving skills consistently deliver high-quality solutions.",
-		avatar: "https://i.pravatar.cc/300?img=1",
+		avatar: "https://i.pravatar.cc/50?img=1",
 	},
 	{
 		name: "Michael Lee",
 		job_title: "Software Engineer at XYZ Tech",
 		testimonial:
 			"Working alongside Anushka has been a pleasure. His proficiency in both front-end and back-end development makes him an asset to any team. He's dedicated and always delivers exceptional results.",
-		avatar: "https://i.pravatar.cc/300?img=2",
+		avatar: "https://i.pravatar.cc/50?img=2",
 	},
 	{
 		name: "Emily Patel",
 		job_title: "Project Manager at ABC Innovations",
 		testimonial:
 			"Anushka's commitment to understanding our project's requirements and delivering scalable solutions has been remarkable. His technical proficiency and collaborative approach significantly contributed to our project's success.",
-		avatar: "https://i.pravatar.cc/300?img=3",
+		avatar: "https://i.pravatar.cc/50?img=3",
 	},
 	{
 		name: "Javier Rodriguez",
 		job_title: "CTO at Digital Nexus",
 		testimonial:
 			"Anushka's skill set as a full stack developer is impressive. His ability to adapt to new technologies and swiftly resolve complex issues demonstrates his exceptional capabilities in the field.",
-		avatar: "https://i.pravatar.cc/300?img=4",
+		avatar: "https://i.pravatar.cc/50?img=4",
 	},
 	{
 		name: "Priya Gupta",
 		job_title: "Lead Developer at SoftwareXpert",
 		testimonial:
 			"Anushka's proficiency across the full stack spectrum is commendable. His innovative solutions and reliable code have been instrumental in enhancing our product's performance and functionality.",
-		avatar: "https://i.pravatar.cc/300?img=5",
+		avatar: "https://i.pravatar.cc/50?img=5",
 	},
 ];
 
 function Testimonials() {
-    const [count, setCount] = useState(3);
-    const showArray = testimonials.slice(0, count);
+	const [count, setCount] = useState(3);
+	const showArray = testimonials.slice(0, count);
 	return (
 		<div className={styles.container} id="testimonials">
 			<motion.h1
@@ -73,7 +73,11 @@ function Testimonials() {
 						</div>
 						<div className={styles.testimonialInfo}>
 							<div className={styles.avatar}>
-								<img src={testimonial.avatar} alt={testimonial.name} />
+								<img
+									src={testimonial.avatar}
+									alt={testimonial.name}
+									loading="lazy"
+								/>
 							</div>
 							<div className={styles.info}>
 								<h2>{testimonial.name}</h2>

@@ -79,5 +79,3 @@ export default function Model(props) {
 		</group>
 	);
 }
-
-useGLTF.preload("/waving.glb");

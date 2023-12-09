@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { AiOutlineFilePdf, AiFillLinkedin, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
-import MainAvatarBg from "../../assets/main_new.png";
 import styles from "./hero.module.css";
 import HeadOnly from "./Head_only";
 import { Canvas } from "@react-three/fiber";
@@ -19,7 +18,13 @@ function Hero() {
 						<HeadOnly />
 					</Canvas>
 					<div className={styles.avatarImgContainer}>
-						<img className={styles.avatar} src={MainAvatarBg} alt="avatar" />
+						<img
+							width={379}
+							height={403}
+							className={styles.avatar}
+							src="/main_new.webp"
+							alt="avatar"
+						/>
 					</div>
 				</div>
 				<motion.h1
@@ -47,7 +52,7 @@ function Hero() {
 					<motion.a
 						href="/"
 						target="_blank"
-						alt="resume"
+						aria-label="resume"
 						className={styles.btn}
 						whileHover={{
 							scale: 1.1,
@@ -60,7 +65,7 @@ function Hero() {
 					<motion.a
 						href="https://www.linkedin.com/in/anushka-madushanka/"
 						target="_blank"
-						alt="linkedin"
+						aria-label="linkedin"
 						className={styles.btn}
 						whileHover={{
 							scale: 1.1,
@@ -73,7 +78,7 @@ function Hero() {
 					<motion.a
 						href="https://github.com/AnushkaMadushanka/"
 						target="_blank"
-						alt="github"
+						aria-label="github"
 						className={styles.btn}
 						whileHover={{
 							scale: 1.1,

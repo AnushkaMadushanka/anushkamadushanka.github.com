@@ -42,17 +42,8 @@ function MyStory() {
 					delivering exceptional outcomes. I write clean, efficient, and well-organized
 					code that adheres to industry best practices.
 				</p>
-				<Link to="/about">
-					<motion.a
-						className={sharedStyles.primaryButton}
-						whileHover={{
-							scale: 1.05,
-							transition: { duration: 0.2 },
-						}}
-						whileTap={{ scale: 0.95 }}
-					>
-						Learn More <AiOutlineArrowRight />
-					</motion.a>
+				<Link to="/about" className={`${sharedStyles.primaryButton}`}>
+					More About Me <AiOutlineArrowRight />
 				</Link>
 			</motion.div>
 		</div>

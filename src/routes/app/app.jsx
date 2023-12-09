@@ -5,11 +5,31 @@ import Background from "../../components/background/background";
 import Navigation from "../../components/navigation/navigation";
 import styles from "./app.module.css";
 import Logo from "../../assets/logo.svg";
-import { Suspense, lazy, useEffect, useState } from "react";
-import ArVisuals from "../ar-visuals/ar-visuals";
+import {
+	Suspense,
+	createContext,
+	lazy,
+	useCallback,
+	useContext,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
 
 const Home = lazy(() => import("../home/home"));
 const About = lazy(() => import("../about/about"));
+const ArVisuals = lazy(() => import("../ar-visuals/ar-visuals"));
+
+const LoadingContext = createContext();
+
+function Fallback() {
+	const { setLoading } = useContext(LoadingContext);
+	useEffect(() => {
+		setLoading(true);
+		return () => setLoading(false);
+	}, [setLoading]);
+	return null;
+}
 
 const router = createBrowserRouter([
 	{
@@ -27,7 +47,7 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: (
-					<Suspense fallback={<div>Loading...</div>}>
+					<Suspense fallback={<Fallback />}>
 						<Home />
 					</Suspense>
 				),
@@ -35,7 +55,7 @@ const router = createBrowserRouter([
 			{
 				path: "/about",
 				element: (
-					<Suspense fallback={<div>Loading...</div>}>
+					<Suspense fallback={<Fallback />}>
 						<About />
 					</Suspense>
 				),
@@ -48,22 +68,39 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/ar",
-		element: <ArVisuals />,
+		element: (
+			<Suspense fallback={<Fallback />}>
+				<ArVisuals />
+			</Suspense>
+		),
 	},
 ]);
 
 function App() {
 	const [loading, setLoading] = useState(true);
+	const timeout = useRef(null);
 
 	useEffect(() => {
 		const targetElement = document.querySelector("body");
-		disableBodyScroll(targetElement);
-		const timer = setTimeout(() => {
-			setLoading(false);
-			enableBodyScroll(targetElement);
-		}, 1000);
-		return () => clearTimeout(timer);
-	}, []);
+		if (loading) disableBodyScroll(targetElement);
+		else enableBodyScroll(targetElement);
+	}, [loading]);
+
+	const setLoadingFunc = useCallback(
+		(value) => {
+			if (!value && loading) {
+				timeout.current = setTimeout(() => {
+					timeout.current = null;
+					setLoading(value);
+				}, 1000);
+			} else if (value && timeout.current) {
+				clearTimeout(timeout.current);
+				timeout.current = null;
+				setLoading(value);
+			}
+		},
+		[loading, setLoading]
+	);
 
 	return (
 		<>
@@ -82,7 +119,9 @@ function App() {
 					</motion.div>
 				)}
 			</AnimatePresence>
-			<RouterProvider router={router} />
+			<LoadingContext.Provider value={{ loading, setLoading: setLoadingFunc }}>
+				<RouterProvider router={router} />
+			</LoadingContext.Provider>
 		</>
 	);
 }

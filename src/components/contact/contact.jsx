@@ -1,10 +1,11 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import emailjs from "@emailjs/browser";
 // import Waving from "../../assets/waving.png";
 import styles from "./contact.module.css";
 import Waving from "./waving";
+import { useRef } from "react";
 
 const contactSchema = Yup.object().shape({
 	name: Yup.string().required("Name is required"),
@@ -13,6 +14,9 @@ const contactSchema = Yup.object().shape({
 });
 
 function Contact() {
+	const ref = useRef(null)
+	const isInView = useInView(ref)
+
 	const formik = useFormik({
 		initialValues: {
 			name: "",
@@ -43,7 +47,7 @@ function Contact() {
 		},
 	});
 	return (
-		<div className={styles.container} id="contact">
+		<div ref={ref} className={styles.container} id="contact">
 			<motion.div
 				className={styles.formContainer}
 				initial={{
@@ -118,7 +122,7 @@ function Contact() {
 				}}
 				transition={{ duration: 0.5 }}
 			>
-				<Waving />
+				{isInView && <Waving />}
 			</motion.div>
 		</div>
 	);
