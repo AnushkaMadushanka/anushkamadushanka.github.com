@@ -4,9 +4,10 @@ import { HashLink } from 'react-router-hash-link';
 import { FaBars } from "react-icons/fa";
 import { AiOutlineArrowUp, AiOutlineClose } from "react-icons/ai";
 import styles from "./navigation.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navigation() {
+	const location = useLocation();
 	const [percentage, setPercentage] = useState(false);
 	const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
@@ -28,6 +29,14 @@ function Navigation() {
 			document.removeEventListener("scroll", handleScroll);
 		};
 	}, [handleScroll]);
+
+	useEffect(() => {
+		window.scrollTo({
+			top: 0,
+			left: 0,
+			behavior: "instant",
+		});
+	}, [location]);
 
 	const scrolled = percentage > 1;
 
