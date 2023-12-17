@@ -53,7 +53,7 @@
     font-weight: 800;
     margin: 0;
     font-family: 'Syne', sans-serif;
-    color: #FAFF1A;
+    color: var(--hero-title);
 }
 
 .subtitle {

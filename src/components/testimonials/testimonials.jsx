@@ -7,39 +7,32 @@ import styles from "./testimonials.module.css";
 
 const testimonials = [
 	{
-		name: "Sarah Johnson",
-		job_title: "CEO at TechSolutions Inc.",
+		name: "Punsisi Kaludewa",
+		job_title: "Software Engineer at iPay Sri Lanka",
 		testimonial:
-			"Anushka's expertise as a full stack developer has been invaluable to our projects. His attention to detail and problem-solving skills consistently deliver high-quality solutions.",
-		avatar: "https://i.pravatar.cc/50?img=1",
+			"I had the pleasure of working with Anushka on diverse projects spanning machine learning and computer vision. Anushka is an outstanding full-stack developer, showcasing a remarkable blend of creative skills and technical expertise. His talent is matched only by his adeptness in teamwork and time management. When Anushka commits to something, he demonstrates remarkable determination to see it through to completion. I highly recommend him as a skilled full-stack developer.",
+		avatar: "https://media.licdn.com/dms/image/D5603AQGUoM_EhalXQQ/profile-displayphoto-shrink_100_100/0/1693922575012?e=1708560000&v=beta&t=HFN3FPmedW8js0Leoau5FmAHepFRGrDD1IriEtE_AbY",
 	},
 	{
-		name: "Michael Lee",
-		job_title: "Software Engineer at XYZ Tech",
+		name: "Thilini Pabasara",
+		job_title: "Digital Developer at MiHCM",
 		testimonial:
-			"Working alongside Anushka has been a pleasure. His proficiency in both front-end and back-end development makes him an asset to any team. He's dedicated and always delivers exceptional results.",
-		avatar: "https://i.pravatar.cc/50?img=2",
+			"I've had the privilege of collaborating closely with Anushka on various data science and server-side projects, and I can confidently attest to his exceptional skills as a full-stack developer. Anushka seamlessly blends technical expertise in both front-end and back-end development, consistently delivering high-quality solutions. What truly sets Anushka apart is not only his technical proficiency but also his excellent teamwork. His collaborative approach and strong problem-solving skills make him a valuable asset to any team. I highly recommend Anushka for their outstanding contributions and dedication to excellence in software development.",
+		avatar: "https://media.licdn.com/dms/image/D5603AQGH70rPR0p4IQ/profile-displayphoto-shrink_100_100/0/1699802180034?e=1708560000&v=beta&t=-OBXaTUXFhh6sgtJqk62qAJtH9wH_MV8xG0WxaQj9Bk",
 	},
 	{
-		name: "Emily Patel",
-		job_title: "Project Manager at ABC Innovations",
+		name: "Hiruni Silva",
+		job_title: "Software Engineer at IFS",
 		testimonial:
-			"Anushka's commitment to understanding our project's requirements and delivering scalable solutions has been remarkable. His technical proficiency and collaborative approach significantly contributed to our project's success.",
-		avatar: "https://i.pravatar.cc/50?img=3",
+			"I had the privilege of collaborating with Anushka on both data science and server-side projects. Anushka is a highly skilled full-stack developer who consistently demonstrates a deep understanding of complex technical concepts. His proficiency in problem-solving and attention to detail were key factors in the success of our projects. Anushka's commitment to delivering high-quality solutions and his ability to work seamlessly across different aspects of development make him an invaluable asset to any team. I wholeheartedly recommend Anushka for his expertise, professionalism, and collaborative spirit.",
+		avatar: "https://media.licdn.com/dms/image/D4E03AQEnDHZn_5SdHw/profile-displayphoto-shrink_100_100/0/1701072103315?e=1708560000&v=beta&t=k8Btv0lvkNGdJBvrUpkVuq_IDTcMKLOCrr0vRhu00bA",
 	},
 	{
-		name: "Javier Rodriguez",
-		job_title: "CTO at Digital Nexus",
+		name: "Shamal Iroshan",
+		job_title: "UI/UX Designer at MiHCM",
 		testimonial:
-			"Anushka's skill set as a full stack developer is impressive. His ability to adapt to new technologies and swiftly resolve complex issues demonstrates his exceptional capabilities in the field.",
-		avatar: "https://i.pravatar.cc/50?img=4",
-	},
-	{
-		name: "Priya Gupta",
-		job_title: "Lead Developer at SoftwareXpert",
-		testimonial:
-			"Anushka's proficiency across the full stack spectrum is commendable. His innovative solutions and reliable code have been instrumental in enhancing our product's performance and functionality.",
-		avatar: "https://i.pravatar.cc/50?img=5",
+			"It has been a pleasure collaborating closely with Anushka, who truly stands out as an exceptional full-stack developer.  Anushka doesn't just know the ins and outs of both front-end and back-end work; he's also impressively quick at picking up new things. His ability to swiftly grasp new concepts and incorporate them into our projects has been remarkable. Anushka's supportiveness within the team has created an environment where everyone feels encouraged to share ideas and grow together. I highly recommend Anushka for his dynamic skills, fast learning, and the positive impact he brings to any software development team.I had the pleasure of working with Anushka on diverse projects spanning machine learning and computer vision. Anushka is an outstanding full-stack developer, showcasing a remarkable blend of creative skills and technical expertise. His talent is matched only by his adeptness in teamwork and time management. When Anushka commits to something, he demonstrates remarkable determination to see it through to completion. I highly recommend him as a skilled full-stack developer.",
+		avatar: "https://media.licdn.com/dms/image/C4D03AQE4Gduqnrlthg/profile-displayphoto-shrink_100_100/0/1652815152698?e=1708560000&v=beta&t=FTQxi-tUHTBgJ3mVPUSG8LiKPARzRdrS3lo3aU2JuVE",
 	},
 ];
 
@@ -54,16 +47,16 @@ function Testimonials() {
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.5 }}
 			>
-				Testimonials
+				What Others Say
 			</motion.h1>
 			<div className={styles.testimonials}>
 				{showArray.map((testimonial, index) => (
 					<motion.div
 						key={index}
 						className={styles.testimonialCard}
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.5, delay: index * 0.1 }}
+						initial={{ opacity: 0, x: index % 2 == 0 ? 20 : -20 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						transition={{ duration: 0.5 }}
 					>
 						<div className={styles.testimonialText}>
 							<div className={styles.icon}>

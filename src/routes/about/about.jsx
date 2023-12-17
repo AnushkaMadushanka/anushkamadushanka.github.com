@@ -1,25 +1,46 @@
 import { motion } from "framer-motion";
-import Waving from "../../components/contact/waving";
 import styles from "./about.module.css";
+import { useContext, useEffect, useState } from "react";
+import { LoadingContext } from "../../context";
 
 function About() {
+	const { loading } = useContext(LoadingContext);
+	const [width, setWidth] = useState(0);
+	useEffect(() => {
+		function handleResize() {
+			setWidth(0)
+			setWidth(document.documentElement.clientWidth);
+		}
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setWidth(document.documentElement.clientWidth);
+		}, 0);
+	}, [loading]);
+
 	return (
-		<div className={styles.container}>
-			<div className={styles.section}>
-				<motion.div
-					className={styles.hero}
-					initial={{
-						x: -100,
-						opacity: 0,
+		<>
+			{!window.matchMedia("(prefers-reduced-motion: reduce)").matches && (
+				<div
+					style={{
+						width: width,
 					}}
-					whileInView={{
-						x: 0,
-						opacity: 1,
-					}}
-					transition={{ duration: 0.5 }}
+					className={styles.sidescroller}
 				>
-					<Waving lookRight />
-				</motion.div>
+					<div className={styles.sidescrollerContent}>
+						{[...Array(11)].map((_, index) => (
+							<img key={index} src={`/aiimages/${index + 1}.webp`} alt="" />
+						))}
+						{[...Array(11)].map((_, index) => (
+							<img key={index} src={`/aiimages/${index + 1}.webp`} alt="" />
+						))}
+					</div>
+				</div>
+			)}
+			<div className={styles.container}>
 				<motion.div
 					className={styles.content}
 					initial={{
@@ -55,8 +76,6 @@ function About() {
 						to hearing from you. Thank you for visiting my portfolio website.
 					</p>
 				</motion.div>
-			</div>
-			<div className={styles.section}>
 				<motion.div
 					className={styles.content}
 					initial={{
@@ -70,55 +89,107 @@ function About() {
 					transition={{ duration: 0.5 }}
 				>
 					<h2>Experience</h2>
-					<p>
-						Software Engineer (Full Stack Developer) Bourke Technologies · Full-time Sep
-						2017 - Jan 2021 · 3 yrs 5 mos
-						<ul>
+					<div className={styles.expSection}>
+						<div className={styles.expHeading}>
+							<h3>Software Engineer (Full Stack Developer)</h3>
+							<p>Bourke Technologies</p>
+							<span>Sep 2017 - Jan 2021 · 3 yrs 5 mos</span>
+						</div>
+						<ul className={styles.expList}>
 							<li>
-								Shopshare.tv - social commerce platform for shoppers to get help,
-								guidance, and inspiration as they shop online. <br />
-								Technologies: React, NodeJs, GraphQL, AWS, PostgreSQL, Sequalize
+								<h4>Hospital Communication System</h4>
+								<p>
+									Live video conferencing app to use inside hospitals for better.
+									communication.
+								</p>
+								<div className={styles.technologies}>
+									<span>React Native</span>
+									<span>.NET WEB API</span>
+									<span>Genie</span>
+									<span>Microsoft SQL Server</span>
+								</div>
 							</li>
 							<li>
-								Shopcast.tv - Widget that shows up on online shopping sites to get
-								help, guidance on specific products.
-								<br />
-								Technologies: React (NextJS), NodeJs, GraphQL, AWS, PostgreSQL,
-								Sequalize
+								<h4>Bunnings</h4>
+								<p>Indoor navigation system for supermarkets.</p>
+								<div className={styles.technologies}>
+									<span>Angular</span>
+									<span>.NET WEB API</span>
+									<span>Genie</span>
+									<span>Microsoft SQL Server</span>
+									<span>Unity</span>
+								</div>
 							</li>
 							<li>
-								Hospital Communication System - Live video conferencing app to use
-								inside hospitals for better. communication.
-								<br />
-								Technologies: React Native, .NET WEB API, Genie, Microsoft SQL
-								Server
+								<h4>Burgercafe</h4>
+								<p>POS system and admin panel for managing your products.</p>
+								<div className={styles.technologies}>
+									<span>.NET MVC</span>
+									<span>Genie</span>
+									<span>Microsoft SQL Server</span>
+									<span>WPF</span>
+									<span>Firebase</span>
+								</div>
 							</li>
 							<li>
-								Bunnings- Indoor navigation system for supermarkets.
-								<br />
-								Technologies: Angular, .NET WEB API, Genie, Microsoft SQL Server,
-								Unity
-							</li>
-							<li>
-								Burgercafe - POS system and admin panel for managing your products.
-								<br />
-								Technologies: .NET MVC, Genie, Microsoft SQL Server, WPF, Firebase
-							</li>
-							<li>
-								Buckingham Tea - Tea e-commerce website
-								<br />
-								Technologies: Angular, .NET WEB API, Genie, Microsoft SQL Server,
-								Stripe Payment APIs, Firebase
+								<h4>Buckingham Tea</h4>
+								<p>Tea e-commerce website</p>
+								<div className={styles.technologies}>
+									<span>Angular</span>
+									<span>.NET WEB API</span>
+									<span>Genie</span>
+									<span>Microsoft SQL Server</span>
+									<span>Stripe Payment APIs</span>
+									<span>Firebase</span>
+								</div>
 							</li>
 						</ul>
-						Lead Web Developer ShopShareTV - Customised Shopping Videos · Full-time Jan
-						2021 - Present · 2 yrs 7 mos
-					</p>
+					</div>
+
+					<div className={styles.expSection}>
+						<div className={styles.expHeading}>
+							<h3>Lead Web Developer</h3>
+							<p>ShopShareTV - Customised Shopping Videos</p>
+							<span>Jan 2021 - Present · 2 yrs 7 mos</span>
+						</div>
+						<ul className={styles.expList}>
+							<li>
+								<h4>Shopshare.tv</h4>
+								<p>
+									social commerce platform for shoppers to get help, guidance, and
+									inspiration as they shop online.
+								</p>
+								<div className={styles.technologies}>
+									<span>React</span>
+									<span>NodeJs</span>
+									<span>GraphQL</span>
+									<span>AWS</span>
+									<span>PostgreSQL</span>
+									<span>Sequalize</span>
+								</div>
+							</li>
+							<li>
+								<h4>Shopcast.tv</h4>
+								<p>
+									Widget that shows up on online shopping sites to get help,
+									guidance on specific products.
+								</p>
+								<div className={styles.technologies}>
+									<span>React</span>
+									<span>NodeJs</span>
+									<span>GraphQL</span>
+									<span>AWS</span>
+									<span>PostgreSQL</span>
+									<span>Sequalize</span>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</motion.div>
 				<motion.div
-					className={styles.hero}
+					className={styles.content}
 					initial={{
-						x: -100,
+						x: 100,
 						opacity: 0,
 					}}
 					whileInView={{
@@ -127,10 +198,20 @@ function About() {
 					}}
 					transition={{ duration: 0.5 }}
 				>
-					<Waving lookRight />
+					<h2>Education</h2>
+					<div className={styles.expSection}>
+						<div className={styles.expHeading}>
+							<h3>B.Eng. (Hons) Software Engineering</h3>
+							<p>
+								Informatics Institute of Technology (LK) Affiliated with University
+								of Westminster (UK)
+							</p>
+							<span>2018 - 2023</span>
+						</div>
+					</div>
 				</motion.div>
 			</div>
-		</div>
+		</>
 	);
 }
 

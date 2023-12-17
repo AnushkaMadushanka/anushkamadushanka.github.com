@@ -86,18 +86,18 @@ const projects = [
 	},
 ];
 
-function Projects() {
+function PersonalProjects() {
 	const [count, setCount] = useState(3);
 	const showArray = projects.slice(0, count);
 	return (
-		<div className={styles.container} id="projects">
+		<div className={styles.container}>
 			<motion.h1
 				className={styles.header}
 				initial={{ opacity: 0, y: 20 }}
 				whileInView={{ opacity: 1, y: 0 }}
 				transition={{ duration: 0.5 }}
 			>
-				Projects
+				Passion Projects
 			</motion.h1>
 			<div className={styles.projects}>
 				{showArray.map((project, index) => (
@@ -146,4 +146,4 @@ function Projects() {
 	);
 }
 
-export default Projects;
+export default PersonalProjects;

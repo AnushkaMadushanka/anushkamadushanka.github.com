@@ -3,7 +3,6 @@ import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import styles from "./app.module.css";
 import {
 	Suspense,
-	createContext,
 	lazy,
 	useCallback,
 	useContext,
@@ -11,14 +10,13 @@ import {
 	useRef,
 	useState,
 } from "react";
+import { LoadingContext } from "../../context";
 
 const Navigation = lazy(() => import("../../components/navigation/navigation"));
 const Background = lazy(() => import("../../components/background/background"));
 const Home = lazy(() => import("../home/home"));
 const About = lazy(() => import("../about/about"));
 const ArVisuals = lazy(() => import("../ar-visuals/ar-visuals"));
-
-const LoadingContext = createContext();
 
 function Fallback() {
 	const { setLoading } = useContext(LoadingContext);
