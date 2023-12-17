@@ -13,6 +13,7 @@ function Background() {
 				fullScreen: {
 					zIndex: -1000,
 				},
+				fpsLimit: 40,
 				particles: {
 					number: {
 						value: 80,

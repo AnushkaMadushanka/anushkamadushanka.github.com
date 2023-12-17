@@ -10,6 +10,7 @@
   <link rel="preload" fetchpriority="high" as="image" href="/logo.svg" type="image/svg+xml">
   <link rel="preload" fetchpriority="high" as="image" href="/loading.svg" type="image/svg+xml">
   <link rel="preload" fetchpriority="high" as="image" href="/main_new.webp" type="image/webp">
+  <link rel="preload" fetchpriority="high" href="/head_only.glb" as="fetch">
   <title>
     Anushka Madushanka - Full Stack Developer
   </title>
@@ -75,12 +76,36 @@
     body {
       background-color: #1F232E;
     }
+
+    .loading {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #1F232E;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loading img {
+      background-image: url('/loading.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+    }
   </style>
 </head>
 
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+  <div id="root">
+    <div class="loading">
+      <img src="/logo.svg" alt="logo" />
+    </div>
+  </div>
 </body>
 
 </html>
