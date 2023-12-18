@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import styles from "./about.module.css";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { LoadingContext } from "../../context";
 
 function About() {
@@ -8,7 +8,7 @@ function About() {
 	const [width, setWidth] = useState(0);
 	useEffect(() => {
 		function handleResize() {
-			setWidth(0)
+			setWidth(0);
 			setWidth(document.documentElement.clientWidth);
 		}
 		window.addEventListener("resize", handleResize);
@@ -20,6 +20,27 @@ function About() {
 			setWidth(document.documentElement.clientWidth);
 		}, 0);
 	}, [loading]);
+
+	const getTimeFormat = useCallback((year, month) => {
+		let now = new Date();
+		let nowYear = now.getFullYear();
+		let nowMonth = now.getMonth() + 1;
+		let diffYear = nowYear - year;
+		let diffMonth = nowMonth - month;
+		if (diffMonth < 0) {
+			diffYear--;
+			diffMonth += 12;
+		}
+		if (diffYear > 0) {
+			if (diffMonth > 0) {
+				return `${diffYear} yrs ${diffMonth} mos`;
+			} else {
+				return `${diffYear} yrs`;
+			}
+		} else {
+			return `${diffMonth} mos`;
+		}
+	}, []);
 
 	return (
 		<>
@@ -55,25 +76,47 @@ function About() {
 				>
 					<h2>My Story</h2>
 					<p>
-						Hi, I’m Anushka Madushanka, a full stack developer with over 6 years of
-						experience in the industry. I’m passionate about creating web and mobile
-						applications that are user-friendly, scalable, and secure. I have a
-						bachelor’s degree in computer software engineering from the University of
-						Westminster and a strong knowledge of various programming languages and
-						frameworks, such as NodeJs, SQL, MongoDB, C#, JavaScript, Angular, and
-						ReactJs. I also have expertise in HTML and CSS and can hand-code a given
-						design into pixel-perfect CSS.
+						Hi, I’m Anushka Madushanka, a full stack developer with over{" "}
+						{
+							(new Date().getFullYear() - 2017) +
+							(new Date().getMonth() - 8 < 0 ? -1 : 0)
+						}+ years of experience in the industry. I’m
+						passionate about creating web and mobile applications that are
+						user-friendly, scalable, and secure. I have a bachelor’s degree in computer
+						software engineering from the University of Westminster and a strong
+						knowledge of various programming languages and frameworks, such as{" "}
+						<span>NodeJs, SQL, MongoDB, C#, JavaScript, Angular, and ReactJs.</span> I
+						also have expertise in HTML and CSS and can hand-code a given design into
+						pixel-perfect CSS.
 						<br />
 						<br /> I have worked on several projects for different clients, ranging from
 						social commerce platforms to live video conferencing apps to indoor
 						navigation systems.
 						<br />
-						<br /> You can check out more of my projects on my GitHub profile. I’m
-						always eager to learn new technologies and take on new challenges. I’m also
-						open to new opportunities and collaborations. If you are interested in
-						working with me or have any questions, feel free to contact me through my
-						LinkedIn profile or email me at anushka.madushanka@gmail.com. I look forward
-						to hearing from you. Thank you for visiting my portfolio website.
+						<br /> You can check out more of my projects on my{" "}
+						<a
+							href="https://github.com/AnushkaMadushanka/"
+							target="_blank"
+							rel="noreferrer"
+						>
+							GitHub profile
+						</a>
+						. I’m always eager to learn new technologies and take on new challenges. I’m
+						also open to new opportunities and collaborations. If you are interested in
+						working with me or have any questions, feel free to contact me through my{" "}
+						<a
+							href="https://www.linkedin.com/in/anushka-madushanka/"
+							target="_blank"
+							rel="noreferrer"
+						>
+							LinkedIn profile
+						</a>{" "}
+						or email me at{" "}
+						<a href="mailto:anushkamadushanka1998@gmail.com">
+							anushkamadushanka1998@gmail.com
+						</a>
+						. I look forward to hearing from you. Thank you for visiting my portfolio
+						website.
 					</p>
 				</motion.div>
 				<motion.div
@@ -150,7 +193,7 @@ function About() {
 						<div className={styles.expHeading}>
 							<h3>Lead Web Developer</h3>
 							<p>ShopShareTV - Customised Shopping Videos</p>
-							<span>Jan 2021 - Present · 2 yrs 7 mos</span>
+							<span>Jan 2021 - Present · {getTimeFormat(2021, 1)}</span>
 						</div>
 						<ul className={styles.expList}>
 							<li>

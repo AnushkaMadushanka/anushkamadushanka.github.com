@@ -32,6 +32,10 @@
     line-height: 150%; /* 30px */
 }
 
+.content p span, a {
+    color: var(--primary);
+}
+
 .expHeading h3 {
     font-size: 1.25rem;
     margin: 0;
