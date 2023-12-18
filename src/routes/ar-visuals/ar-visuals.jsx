@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { MindARThree } from "mind-ar/dist/mindar-image-three.prod.js";
 import * as THREE from "three";
 import styles from "./ar-visuals.module.css";
@@ -6,6 +6,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { AiFillHome } from "react-icons/ai";
 
 const loader = new GLTFLoader();
+const texureLoader = new THREE.TextureLoader()
 
 const PUBLIC_URL = import.meta.env.PROD
 	? "https://anushkamadushanka.github.io"
@@ -16,6 +17,11 @@ export default function ArVisuals() {
 	const isUsed = useRef(false);
 	const mindarThree = useRef(null);
 	const mixer = useRef(null);
+	const imgPlaneRef = useRef(null);
+	const [currentImageIndex, setCurrentImageIndex] = useState(0);
+	const imagePlaneInterval = useRef(null);
+	const loaderTopRef = useRef(null);
+	const [progress, setProgress] = useState(0);
 
 	const onPointerDown = useCallback((event) => {
 		event.preventDefault();
@@ -35,6 +41,16 @@ export default function ArVisuals() {
 				window.open("https://github.com/AnushkaMadushanka/", "_blank");
 			else if (intersects[0].object.name.startsWith("button_pdf"))
 				window.open("https://anushkamadushanka.github.io", "_blank");
+			else if (intersects[0].object.name.startsWith("button_home"))
+				window.open("https://anushkamadushanka.github.io", "_blank");
+			else if (intersects[0].object.name === "plane_ai_images") {
+				setCurrentImageIndex((prev) => (prev + 1) % 11);
+				clearInterval(imagePlaneInterval.current);
+				setProgress(0);
+				imagePlaneInterval.current = setInterval(() => {
+					setProgress((prev) => (prev + 1) % 100);
+				}, 30);
+			}
 		}
 	}, []);
 
@@ -59,6 +75,39 @@ export default function ArVisuals() {
 		});
 		const plane = new THREE.Mesh(geometry, material);
 		group.add(plane);
+
+		const imgGroup = new THREE.Group();
+		group.add(imgGroup);
+
+		const imgGeometry = new THREE.PlaneGeometry(0.3, 0.55);
+		const imgMaterial = new THREE.MeshBasicMaterial({
+			map: texureLoader.load(`/aiimages/1.webp`),
+		});
+		const imgPlane = new THREE.Mesh(imgGeometry, imgMaterial);
+		imgPlane.name = "plane_ai_images";
+		imgGroup.add(imgPlane);
+		imgGroup.position.set(0.7, 0, 0);
+		imgPlaneRef.current = imgPlane;
+
+		imagePlaneInterval.current = setInterval(() => {
+			setProgress((prev) => (prev + 1) % 100);
+		}, 30);
+
+		const loaderGeometry = new THREE.PlaneGeometry(0.3, 0.01);
+		const loaderTopMaterial = new THREE.MeshBasicMaterial({
+			color: 0xffffff,
+		});
+		const loaderBottomMaterial = new THREE.MeshBasicMaterial({
+			color: 0x666666,
+		});
+		loaderTopRef.current = new THREE.Mesh(loaderGeometry, loaderTopMaterial);
+		const loaderBottom = new THREE.Mesh(loaderGeometry, loaderBottomMaterial);
+		imgGroup.add(loaderTopRef.current);
+		imgGroup.add(loaderBottom);
+		loaderTopRef.current.position.set(0, -0.3, 0.01);
+		loaderBottom.position.set(0, -0.3, 0);
+		loaderTopRef.current.scale.set(0, 1, 1);
+
 		const { renderer, scene, camera } = mindarThree.current;
 
 		const wavingPromise = new Promise((resolve, reject) => {
@@ -88,7 +137,7 @@ export default function ArVisuals() {
 				"/buttons.glb",
 				function (gltf) {
 					gltf.scene.scale.set(0.075, 0.075, 0.075);
-					gltf.scene.position.set(0.65, -0.3, 0);
+					gltf.scene.position.set(-0.35, -0.47, 0);
 					gltf.scene.rotation.set(Math.PI / 2, 0, 0);
 					gltf.scene.traverse((o) => {
 						if (o.isMesh) {
@@ -99,7 +148,6 @@ export default function ArVisuals() {
 							});
 						}
 					});
-					console.log(gltf.scene);
 					group.add(gltf.scene);
 					resolve();
 				},
@@ -134,6 +182,21 @@ export default function ArVisuals() {
 			}
 		};
 	}, [onPointerDown]);
+
+	useEffect(() => {
+		if (imgPlaneRef.current) {
+			imgPlaneRef.current.material.map = texureLoader.load(
+				`/aiimages/${currentImageIndex + 1}.webp`
+			);
+		}
+	}, [currentImageIndex]);
+
+	useEffect(() => {
+		if (loaderTopRef.current) 
+			loaderTopRef.current.scale.set(progress / 100, 1, 1);
+		if (progress === 99) 
+			setCurrentImageIndex((prev) => (prev + 1) % 11);
+	}, [progress]);
 
 	return (
 		<>
