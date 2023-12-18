@@ -2,7 +2,7 @@
 	"name": "portfolio-v3.0",
 	"private": true,
 	"version": "0.0.0",
-	"homepage": "https://anushkamadushanka.github.com",
+	"homepage": "https://anushkamadushanka.github.io",
 	"type": "module",
 	"scripts": {
 		"predeploy": "yarn build",
