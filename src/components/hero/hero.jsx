@@ -50,7 +50,7 @@ function Hero() {
 					transition={{ duration: 0.5, delay: 0.4 }}
 				>
 					<motion.a
-						href="/"
+						href="/cv.pdf"
 						target="_blank"
 						aria-label="resume"
 						className={styles.btn}

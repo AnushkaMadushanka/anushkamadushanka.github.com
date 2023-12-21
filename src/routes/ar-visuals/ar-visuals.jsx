@@ -23,6 +23,10 @@ export default function ArVisuals() {
 	const loaderTopRef = useRef(null);
 	const [progress, setProgress] = useState(0);
 
+	const openLink = useCallback((url) => {
+		window.open(url, "_blank") || window.location.assign(url);
+	}, []);
+
 	const onPointerDown = useCallback((event) => {
 		event.preventDefault();
 		const { renderer, scene, camera } = mindarThree.current;
@@ -34,15 +38,14 @@ export default function ArVisuals() {
 		raycaster.setFromCamera(mouse, camera);
 		const intersects = raycaster.intersectObjects(scene.children, true);
 		if (intersects.length > 0) {
-			console.log(intersects[0].object);
 			if (intersects[0].object.name.startsWith("button_linkedin"))
-				window.open("https://www.linkedin.com/in/anushka-madushanka/", "_blank");
+				openLink("https://www.linkedin.com/in/anushka-madushanka/");
 			else if (intersects[0].object.name.startsWith("button_github"))
-				window.open("https://github.com/AnushkaMadushanka/", "_blank");
+				openLink("https://github.com/AnushkaMadushanka/");
 			else if (intersects[0].object.name.startsWith("button_pdf"))
-				window.open("https://anushkamadushanka.github.io", "_blank");
+				openLink("https://anushkamadushanka.github.io/cv.pdf");
 			else if (intersects[0].object.name.startsWith("button_home"))
-				window.open("https://anushkamadushanka.github.io", "_blank");
+				openLink("https://anushkamadushanka.github.io");
 			else if (intersects[0].object.name === "plane_ai_images") {
 				setCurrentImageIndex((prev) => (prev + 1) % 11);
 				clearInterval(imagePlaneInterval.current);

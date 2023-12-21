@@ -31,6 +31,7 @@ function Navigation() {
 	}, [handleScroll]);
 
 	useEffect(() => {
+		if (location.hash) return
 		window.scrollTo({
 			top: 0,
 			left: 0,
