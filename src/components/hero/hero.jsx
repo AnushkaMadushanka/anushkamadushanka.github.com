@@ -54,11 +54,12 @@ function Hero() {
 						target="_blank"
 						aria-label="resume"
 						className={styles.btn}
+						initial={{ scale: 1 }}
 						whileHover={{
 							scale: 1.1,
 							transition: { duration: 0.2 },
 						}}
-						whileTap={{ scale: 0.9 }}
+						whileTap={{ scale: 1 }}
 					>
 						<AiOutlineFilePdf />
 					</motion.a>
@@ -67,11 +68,12 @@ function Hero() {
 						target="_blank"
 						aria-label="linkedin"
 						className={styles.btn}
+						initial={{ scale: 1 }}
 						whileHover={{
 							scale: 1.1,
 							transition: { duration: 0.2 },
 						}}
-						whileTap={{ scale: 0.9 }}
+						whileTap={{ scale: 1 }}
 					>
 						<AiFillLinkedin />
 					</motion.a>
@@ -80,11 +82,12 @@ function Hero() {
 						target="_blank"
 						aria-label="github"
 						className={styles.btn}
+						initial={{ scale: 1 }}
 						whileHover={{
 							scale: 1.1,
 							transition: { duration: 0.2 },
 						}}
-						whileTap={{ scale: 0.9 }}
+						whileTap={{ scale: 1 }}
 					>
 						<AiFillGithub />
 					</motion.a>

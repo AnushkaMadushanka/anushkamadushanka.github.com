@@ -55,7 +55,7 @@ export default function ArVisuals() {
 				}, 30);
 			}
 		}
-	}, []);
+	}, [openLink]);
 
 	useEffect(() => {
 		if (isUsed.current) {
@@ -107,7 +107,7 @@ export default function ArVisuals() {
 		const loaderBottom = new THREE.Mesh(loaderGeometry, loaderBottomMaterial);
 		imgGroup.add(loaderTopRef.current);
 		imgGroup.add(loaderBottom);
-		loaderTopRef.current.position.set(0, -0.3, 0.01);
+		loaderTopRef.current.position.set(0, -0.3, 0.001);
 		loaderBottom.position.set(0, -0.3, 0);
 		loaderTopRef.current.scale.set(0, 1, 1);
 

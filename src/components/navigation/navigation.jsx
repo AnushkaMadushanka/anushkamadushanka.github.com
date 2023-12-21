@@ -46,7 +46,8 @@ function Navigation() {
 
 	const menuItems = (
 		<>
-			<motion.li
+			<motion.div
+				className={styles.navLinkContainer}
 				initial={{ opacity: 0, y: -20, height: 0 }}
 				whileInView={{ opacity: 1, y: 0, height: "auto" }}
 				exit={{ opacity: 0, y: -20, height: 0, transition: { delay: 0.3 } }}
@@ -54,8 +55,9 @@ function Navigation() {
 				<HashLink smooth  to="/#about" className={styles.navLink}>
 					About
 				</HashLink>
-			</motion.li>
-			<motion.li
+			</motion.div>
+			<motion.div
+				className={styles.navLinkContainer}
 				initial={{ opacity: 0, y: -20, height: 0 }}
 				whileInView={{ opacity: 1, y: 0, height: "auto", transition: { delay: 0.1 } }}
 				exit={{ opacity: 0, y: -20, height: 0, transition: { delay: 0.2 } }}
@@ -63,8 +65,9 @@ function Navigation() {
 				<HashLink smooth  to="/#projects" className={styles.navLink}>
 					Projects
 				</HashLink>
-			</motion.li>
-			<motion.li
+			</motion.div>
+			<motion.div
+				className={styles.navLinkContainer}
 				initial={{ opacity: 0, y: -20, height: 0 }}
 				whileInView={{ opacity: 1, y: 0, height: "auto", transition: { delay: 0.2 } }}
 				exit={{ opacity: 0, y: -20, height: 0, transition: { delay: 0.1 } }}
@@ -72,8 +75,9 @@ function Navigation() {
 				<HashLink smooth  to="/#testimonials" className={styles.navLink}>
 					Testimonials
 				</HashLink>
-			</motion.li>
-			<motion.li
+			</motion.div>
+			<motion.div
+				className={styles.navLinkContainer}
 				initial={{ opacity: 0, y: -20, height: 0 }}
 				whileInView={{ opacity: 1, y: 0, height: "auto", transition: { delay: 0.3 } }}
 				exit={{ opacity: 0, y: -20, height: 0 }}
@@ -81,7 +85,7 @@ function Navigation() {
 				<HashLink smooth  to="/#contact" className={styles.navLink}>
 					Contact
 				</HashLink>
-			</motion.li>
+			</motion.div>
 		</>
 	);
 
@@ -93,7 +97,7 @@ function Navigation() {
 						<img src="/logo.svg" alt="logo" />
 					</Link>
 
-					<ul className={styles.navLinks}>
+					<div className={styles.navLinks}>
 						<input
 							className={styles.hamburgerCheckbox}
 							type="checkbox"
@@ -109,7 +113,7 @@ function Navigation() {
 						<AnimatePresence>
 							{hamburgerOpen && <div className={styles.menuMobile}>{menuItems}</div>}
 						</AnimatePresence>
-					</ul>
+					</div>
 				</nav>
 			</div>
 			<AnimatePresence initial={false}>

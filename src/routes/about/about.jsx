@@ -53,10 +53,22 @@ function About() {
 				>
 					<div className={styles.sidescrollerContent}>
 						{[...Array(11)].map((_, index) => (
-							<img key={index} src={`/aiimages/${index + 1}.webp`} alt="" />
+							<img
+								width={211}
+								height={374}
+								key={index}
+								src={`/aiimages/${index + 1}.webp`}
+								alt=""
+							/>
 						))}
 						{[...Array(11)].map((_, index) => (
-							<img key={index} src={`/aiimages/${index + 1}.webp`} alt="" />
+							<img
+								width={211}
+								height={374}
+								key={index}
+								src={`/aiimages/${index + 1}.webp`}
+								alt=""
+							/>
 						))}
 					</div>
 				</div>
@@ -77,14 +89,12 @@ function About() {
 					<h2>My Story</h2>
 					<p>
 						Hi, I’m Anushka Madushanka, a full stack developer with over{" "}
-						{
-							(new Date().getFullYear() - 2017) +
-							(new Date().getMonth() - 8 < 0 ? -1 : 0)
-						}+ years of experience in the industry. I’m
-						passionate about creating web and mobile applications that are
-						user-friendly, scalable, and secure. I have a bachelor’s degree in computer
-						software engineering from the University of Westminster and a strong
-						knowledge of various programming languages and frameworks, such as{" "}
+						{new Date().getFullYear() - 2017 + (new Date().getMonth() - 8 < 0 ? -1 : 0)}
+						+ years of experience in the industry. I’m passionate about creating web and
+						mobile applications that are user-friendly, scalable, and secure. I have a
+						bachelor’s degree in computer software engineering from the University of
+						Westminster and a strong knowledge of various programming languages and
+						frameworks, such as{" "}
 						<span>NodeJs, SQL, MongoDB, C#, JavaScript, Angular, and ReactJs.</span> I
 						also have expertise in HTML and CSS and can hand-code a given design into
 						pixel-perfect CSS.
