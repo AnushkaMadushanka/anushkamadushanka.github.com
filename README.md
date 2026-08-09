@@ -7,7 +7,7 @@
 ![Vite](https://img.shields.io/badge/Vite-4-646CFF)
 ![three.js](https://img.shields.io/badge/three.js-r158-000000)
 
-<img src="https://raw.githubusercontent.com/AnushkaMadushanka/anushkamadushanka.github.com/gh-pages/main_new.webp" alt="Portfolio" width="380">
+[<img src="https://raw.githubusercontent.com/AnushkaMadushanka/anushkamadushanka.github.com/main/docs/screenshot.webp" alt="anushkamadushanka.github.io — hero and My Story sections">](https://anushkamadushanka.github.io)
 
 ---
 
