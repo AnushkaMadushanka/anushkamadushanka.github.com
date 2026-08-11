@@ -14,7 +14,6 @@ export const projects = [
 		repo: `${GH}/mocap-hpe`,
 		demo: "https://www.youtube.com/watch?v=rZU_7MSCpr0",
 		demoLabel: "Watch demo",
-		featured: true,
 	},
 	{
 		name: "auto-extension-reloader",
@@ -25,17 +24,6 @@ export const projects = [
 		repo: `${GH}/auto-extension-reloader`,
 		demo: "https://www.npmjs.com/package/auto-extension-reloader",
 		demoLabel: "View on npm",
-		featured: true,
-	},
-	{
-		name: "Virtual Showroom",
-		blurb:
-			"Build a 3D art gallery in the browser, then walk through it. Recast compiled to WebAssembly bakes a navmesh in a web worker from geometry the user assembled seconds earlier, so guided tours can path between pieces.",
-		tags: ["three.js", "WebAssembly", "Web Workers", "React", "Node.js"],
-		image: null,
-		repo: `${GH}/virtual-showroom`,
-		demo: null,
-		featured: true,
 	},
 	{
 		name: "SL News",
@@ -48,7 +36,6 @@ export const projects = [
 		image: "/work/slnews/hero.webp",
 		repo: `${GH}/slnews`,
 		demo: null,
-		featured: false,
 	},
 	{
 		name: "Ludo Shooter",
@@ -59,7 +46,6 @@ export const projects = [
 		repo: `${GH}/ludo-shooter`,
 		demo: "https://anushka-madushanka.itch.io/ludo-shooter",
 		demoLabel: "Play on itch.io",
-		featured: false,
 	},
 	{
 		name: "Operation Alone",
@@ -70,7 +56,6 @@ export const projects = [
 		repo: `${GH}/Operation-Alone`,
 		demo: "https://anushka-madushanka.itch.io/operation-alone",
 		demoLabel: "Play on itch.io",
-		featured: false,
 	},
 	{
 		name: "SQL Dummy Data Generator",
@@ -81,7 +66,15 @@ export const projects = [
 		repo: `${GH}/SQL-Dummy-Data-Generator`,
 		demo: "https://www.youtube.com/watch?v=b3AlZ1YqNBw",
 		demoLabel: "Watch demo",
-		featured: false,
+	},
+	{
+		name: "Virtual Showroom",
+		blurb:
+			"Build a 3D art gallery in the browser, then walk through it. Recast compiled to WebAssembly bakes a navmesh in a web worker from geometry the user assembled seconds earlier, so guided tours can path between pieces.",
+		tags: ["three.js", "WebAssembly", "Web Workers", "React", "Node.js"],
+		image: null,
+		repo: `${GH}/virtual-showroom`,
+		demo: null,
 	},
 	{
 		name: "Nightmarescape",
@@ -91,7 +84,6 @@ export const projects = [
 		image: "/projects/nightmarescape.webp",
 		repo: `${GH}/nightmarescape`,
 		demo: null,
-		featured: false,
 	},
 	{
 		name: "Audio Visualisation",
@@ -102,7 +94,6 @@ export const projects = [
 		repo: `${GH}/Audio-Visualization`,
 		demo: "https://www.youtube.com/watch?v=NCvmuG4uP6A",
 		demoLabel: "Watch demo",
-		featured: false,
 	},
 	{
 		name: "Q&A Forum",
@@ -113,6 +104,5 @@ export const projects = [
 		repo: `${GH}/cw-forum`,
 		demo: "https://www.youtube.com/watch?v=GWy1kGbydBM",
 		demoLabel: "Watch demo",
-		featured: false,
 	},
 ];
