@@ -42,7 +42,10 @@ export const projects = [
 		blurb:
 			"A Sinhala-language Android reader aggregating five Sri Lankan broadcasters into one feed. No broadcaster publishes an API, so the backend is a Puppeteer scraper with request interception and single-flight caching.",
 		tags: ["React Native", "Node.js", "Puppeteer", "Firebase"],
-		image: "/projects/slnews.webp",
+		/* Landscape composite of three framed screens. A single tall phone
+		   screenshot cover-cropped into the card's 16:10 slot showed nothing
+		   but its status bar. */
+		image: "/work/slnews/hero.webp",
 		repo: `${GH}/slnews`,
 		demo: null,
 		featured: false,

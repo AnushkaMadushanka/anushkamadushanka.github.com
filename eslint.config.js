@@ -8,7 +8,16 @@ export default [
 	{ ignores: ["dist", "node_modules"] },
 	js.configs.recommended,
 	{
-		files: ["**/*.{js,jsx}"],
+		/* Build scripts run in Node, not the browser. */
+		files: ["scripts/**/*.mjs", "*.config.js"],
+		languageOptions: {
+			ecmaVersion: "latest",
+			sourceType: "module",
+			globals: { ...globals.node },
+		},
+	},
+	{
+		files: ["src/**/*.{js,jsx}"],
 		languageOptions: {
 			ecmaVersion: "latest",
 			globals: { ...globals.browser },

@@ -1,14 +1,22 @@
-import { HiArrowUpRight } from "react-icons/hi2";
+import { Link } from "react-router-dom";
+import { HiArrowRight, HiArrowUpRight } from "react-icons/hi2";
 import { work } from "../../data/work.js";
 import Section from "../ui/Section.jsx";
 import Reveal from "../ui/Reveal.jsx";
 import styles from "./Work.module.css";
 
 function Card({ item, index }) {
-	const Wrapper = item.href ? "a" : "div";
-	const linkProps = item.href
-		? { href: item.href, target: "_blank", rel: "noreferrer" }
-		: {};
+	/* A product with a written case study links inward to its own page. One
+	   without links straight out to the live product instead. */
+	const to = item.caseStudy ? `/work/${item.slug}` : null;
+	/* Without a case study, fall through to the product's own first link. */
+	const outbound = item.links?.[0] ?? (item.href ? { href: item.href, label: item.hrefLabel } : null);
+	const Wrapper = to ? Link : outbound ? "a" : "div";
+	const wrapperProps = to
+		? { to }
+		: outbound
+			? { href: outbound.href, target: "_blank", rel: "noreferrer" }
+			: {};
 
 	return (
 		<Reveal
@@ -16,11 +24,11 @@ function Card({ item, index }) {
 			index={index}
 			className={`${styles.card} ${item.featured ? styles.featured : ""}`}
 		>
-			<Wrapper className={styles.cardInner} {...linkProps}>
+			<Wrapper className={styles.cardInner} {...wrapperProps}>
 				<div className={styles.media}>
-					{item.image ? (
+					{item.cardImage || item.image ? (
 						<img
-							src={item.image}
+							src={item.cardImage ?? item.image}
 							alt={`${item.name}: ${item.summary}`}
 							loading="lazy"
 							decoding="async"
@@ -45,7 +53,11 @@ function Card({ item, index }) {
 
 					<h3 className={styles.name}>
 						{item.name}
-						{item.href && <HiArrowUpRight className={styles.arrow} aria-hidden="true" />}
+						{to ? (
+							<HiArrowRight className={styles.arrow} aria-hidden="true" />
+						) : (
+							outbound && <HiArrowUpRight className={styles.arrow} aria-hidden="true" />
+						)}
 					</h3>
 
 					<p className={styles.summary}>{item.summary}</p>
@@ -68,7 +80,9 @@ function Card({ item, index }) {
 						))}
 					</ul>
 
-					{item.href && <span className={styles.host}>{item.hrefLabel}</span>}
+					<span className={styles.host}>
+						{to ? "Read the case study" : (outbound?.label ?? null)}
+					</span>
 				</div>
 			</Wrapper>
 		</Reveal>

@@ -18,6 +18,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	min-width: 0;
 	background: var(--surface-1);
 	border: 1px solid var(--border);
 	border-radius: var(--radius-lg);
@@ -95,6 +96,9 @@ a.cardInner:hover .media img {
 .featured:first-child .media img {
 	height: 100%;
 	aspect-ratio: auto;
+	/* The side-by-side column is tall, so anchoring to the top would clip the
+	   bottom off a device mockup. Centre it instead. */
+	object-position: center;
 }
 
 /* --- empty media state ------------------------------------------------- */
@@ -144,6 +148,8 @@ a.cardInner:hover .media img {
 	gap: var(--space-3);
 	padding: clamp(1.25rem, 2.5vw, 1.75rem);
 	flex: 1;
+	min-width: 0;
+	overflow-wrap: anywhere;
 }
 
 .meta {
@@ -249,7 +255,10 @@ a.cardInner:hover .arrow {
 /* --- responsive -------------------------------------------------------- */
 @media (max-width: 860px) {
 	.grid {
-		grid-template-columns: 1fr;
+		/* `minmax(0, 1fr)` rather than `1fr`, because a 1fr track takes its automatic
+		   minimum from min-content, so a long chip could push the whole grid
+		   wider than the viewport on a 320px screen. */
+		grid-template-columns: minmax(0, 1fr);
 	}
 
 	.featured:first-child .cardInner,

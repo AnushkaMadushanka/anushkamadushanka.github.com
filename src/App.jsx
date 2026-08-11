@@ -8,8 +8,9 @@ import NotFound from "./routes/NotFound.jsx";
 import styles from "./App.module.css";
 
 /* Home is the page nearly everyone lands on, so it ships in the entry bundle.
-   About is the only route worth splitting. */
+   The secondary routes are split out. */
 const About = lazy(() => import("./routes/About.jsx"));
+const WorkDetail = lazy(() => import("./routes/WorkDetail.jsx"));
 
 function Layout() {
 	return (
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
 				element: (
 					<Suspense fallback={<div className={styles.routeFallback} aria-busy="true" />}>
 						<About />
+					</Suspense>
+				),
+			},
+			{
+				path: "/work/:slug",
+				element: (
+					<Suspense fallback={<div className={styles.routeFallback} aria-busy="true" />}>
+						<WorkDetail />
 					</Suspense>
 				),
 			},

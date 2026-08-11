@@ -3,6 +3,7 @@ import { HiArrowUpRight } from "react-icons/hi2";
 import { profile, duration, yearsSince } from "../data/profile.js";
 import { experience, education, skills } from "../data/experience.js";
 import Reveal from "../components/ui/Reveal.jsx";
+import useMeta from "../lib/useMeta.js";
 import GradPhoto from "../assets/grad.webp";
 import styles from "./About.module.css";
 
@@ -15,17 +16,16 @@ function label(iso) {
 }
 
 export default function About() {
+	/* Its own title, description and canonical, so search engines don't read
+	   this page as a duplicate of the home page. */
+	useMeta({
+		title: `About - ${profile.name}`,
+		description: `Background, experience and skills of ${profile.name}, a senior full-stack engineer with ${yearsSince()} years shipping production web and mobile products.`,
+		path: "/about",
+	});
+
 	return (
 		<>
-			<title>About — Anushka Madushanka</title>
-			<meta
-				name="description"
-				content={`Background, experience and skills of Anushka Madushanka, a senior full-stack engineer with ${yearsSince()} years shipping production web and mobile products.`}
-			/>
-			{/* Its own canonical. The old build pointed every route at "/", which
-			    told search engines this page was a duplicate of the home page. */}
-			<link rel="canonical" href={`${profile.site}/about`} />
-
 			<div className={`container ${styles.page}`}>
 				<Reveal className={styles.intro}>
 					<p className={styles.eyebrow}>About</p>
