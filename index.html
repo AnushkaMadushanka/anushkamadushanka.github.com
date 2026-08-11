@@ -3,110 +3,96 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preload" fetchpriority="high" as="image" href="/logo.svg" type="image/svg+xml">
-  <link rel="preload" fetchpriority="high" as="image" href="/loading.svg" type="image/svg+xml">
-  <link rel="preload" fetchpriority="high" as="image" href="/main_new.webp" type="image/webp">
-  <link rel="preload" fetchpriority="high" href="/head_only.glb" as="fetch">
-  <title>
-    Anushka Madushanka - Full Stack Developer
-  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0A0E13" />
 
+  <title>Anushka Madushanka — Senior Full-Stack Engineer</title>
   <meta name="description"
-    content="I am a skilled software engineer specializing in desktop, web, and game development. I have excellent problem-solving abilities, a passion for learning, and a commitment to delivering exceptional outcomes. I write clean, efficient, and well-organized code that adheres to industry best practices.">
-  <meta name="keywords" content="anushka, madushanka, anushka madushanka, web developer, fullstack developer, custom development">
+    content="Senior full-stack engineer with 9 years shipping production web and mobile products. React, React Native, Node.js, GraphQL and PostgreSQL. Currently building Uplist for Ray White." />
+
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <link rel="apple-touch-icon" href="/logo.svg" />
   <link rel="canonical" href="https://anushkamadushanka.github.io/" />
 
-  <!-- Open Graph Tags for social media sharing -->
-  <meta property="og:title" content="Anushka Madushanka - Full Stack Developer">
+  <!-- Fonts are self-hosted, so they preload from our own origin with no
+       third-party connection and no render-blocking @import. -->
+  <link rel="preload" href="/fonts/Outfit.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/Syne.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" fetchpriority="high" as="image" href="/main_new.webp" type="image/webp" />
+
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Anushka Madushanka — Senior Full-Stack Engineer" />
   <meta property="og:description"
-    content="I am a skilled software engineer specializing in desktop, web, and game development. I have excellent problem-solving abilities, a passion for learning, and a commitment to delivering exceptional outcomes. I write clean, efficient, and well-organized code that adheres to industry best practices.">
-  <meta property="og:image" content="https://anushkamadushanka.github.io/scr.jpg">
-  <meta property="og:url" content="https://anushkamadushanka.github.io/">
-  <meta property="og:type" content="website">
+    content="9 years shipping production web and mobile products. React, React Native, Node.js, GraphQL and PostgreSQL." />
+  <meta property="og:image" content="https://anushkamadushanka.github.io/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://anushkamadushanka.github.io/" />
+  <meta property="og:site_name" content="Anushka Madushanka" />
 
-  <!-- Twitter Card Tags for Twitter sharing -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Anushka Madushanka - Full Stack Developer">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Anushka Madushanka — Senior Full-Stack Engineer" />
   <meta name="twitter:description"
-    content="I am a skilled software engineer specializing in desktop, web, and game development. I have excellent problem-solving abilities, a passion for learning, and a commitment to delivering exceptional outcomes. I write clean, efficient, and well-organized code that adheres to industry best practices.">
-  <meta name="twitter:image" content="https://anushkamadushanka.github.io/scr.jpg">
+    content="9 years shipping production web and mobile products. React, React Native, Node.js, GraphQL and PostgreSQL." />
+  <meta name="twitter:image" content="https://anushkamadushanka.github.io/og.jpg" />
 
-  <!-- Schema Markup (example for a person) -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Anushka Madushanka",
+      "jobTitle": "Senior Full-Stack Engineer",
+      "email": "mailto:anushkamadushanka1998@gmail.com",
       "url": "https://anushkamadushanka.github.io/",
+      "image": "https://anushkamadushanka.github.io/og.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "LK"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Informatics Institute of Technology, affiliated with University of Westminster"
+      },
+      "knowsAbout": [
+        "React",
+        "React Native",
+        "TypeScript",
+        "Node.js",
+        "GraphQL",
+        "PostgreSQL",
+        "AWS",
+        "Supabase"
+      ],
       "sameAs": [
         "https://www.linkedin.com/in/anushka-madushanka/",
-        "https://github.com/AnushkaMadushanka/",
+        "https://github.com/AnushkaMadushanka"
       ]
     }
-    </script>
-  <!-- Start Single Page Apps for GitHub Pages -->
-  <script type="text/javascript">
-    // Single Page Apps for GitHub Pages
-    // MIT License
-    // https://github.com/rafgraph/spa-github-pages
-    // This script checks to see if a redirect is present in the query string,
-    // converts it back into the correct url and adds it to the
-    // browser's history using window.history.replaceState(...),
-    // which won't cause the browser to attempt to load the new url.
-    // When the single page app is loaded further down in this file,
-    // the correct url will be waiting in the browser's history for
-    // the single page app to route accordingly.
+  </script>
+
+  <!-- Single Page Apps for GitHub Pages — MIT, https://github.com/rafgraph/spa-github-pages
+       Restores the real path from the query string that 404.html redirected into. -->
+  <script>
     (function (l) {
       if (l.search[1] === '/') {
         var decoded = l.search.slice(1).split('&').map(function (s) {
           return s.replace(/~and~/g, '&')
         }).join('?');
-        window.history.replaceState(null, null,
-          l.pathname.slice(0, -1) + decoded + l.hash
-        );
+        window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
       }
     }(window.location))
   </script>
-  <!-- End Single Page Apps for GitHub Pages -->
 
   <style>
-    body {
-      background-color: #1F232E;
-    }
-
-    .loading {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background-color: #1F232E;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .loading img {
-      background-image: url('/loading.svg');
-      background-repeat: no-repeat;
-      background-size: contain;
-      width: 100px;
-      height: 100px;
-      padding: 10px;
-    }
+    /* Paint the ground before any CSS chunk arrives, so there is never a
+       white flash on a dark site. */
+    html { background-color: #0A0E13; }
   </style>
 </head>
 
 <body>
-  <div id="root">
-    <div class="loading">
-      <img src="/logo.svg" alt="logo" />
-    </div>
-  </div>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 
 </html>

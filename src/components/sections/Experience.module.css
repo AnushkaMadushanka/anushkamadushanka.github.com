@@ -1,0 +1,174 @@
+.timeline {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(2rem, 4vw, 3rem);
+	margin: 0;
+}
+
+.item {
+	display: grid;
+	grid-template-columns: 28px minmax(0, 1fr);
+	gap: var(--space-5);
+}
+
+/* --- rail -------------------------------------------------------------- */
+.marker {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	padding-top: 7px;
+}
+
+/* The connecting line, drawn from each marker down to the next. */
+.marker::after {
+	content: "";
+	position: absolute;
+	top: 24px;
+	bottom: calc(-1 * clamp(2rem, 4vw, 3rem) - 7px);
+	width: 1px;
+	background: linear-gradient(var(--border-strong), transparent);
+}
+
+.item:last-child .marker::after {
+	display: none;
+}
+
+.dot {
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	background: var(--bg);
+	border: 2px solid var(--border-strong);
+	z-index: 1;
+}
+
+/* Current role reads differently from past ones. */
+.item:first-child .dot {
+	background: var(--accent);
+	border-color: var(--accent);
+	box-shadow: 0 0 0 4px var(--accent-quiet);
+}
+
+/* --- content ----------------------------------------------------------- */
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	padding-bottom: var(--space-2);
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+}
+
+.role {
+	font-size: var(--text-lg);
+}
+
+.company {
+	font-weight: 600;
+	color: var(--accent);
+	font-size: var(--text-sm);
+}
+
+.type,
+.dates {
+	font-weight: 400;
+	color: var(--text-3);
+}
+
+.dates {
+	font-family: var(--font-mono);
+	font-size: var(--text-xs);
+	letter-spacing: 0.02em;
+}
+
+.sep {
+	margin-inline: var(--space-2);
+	color: var(--border-strong);
+}
+
+.blurb {
+	color: var(--text-2);
+	font-size: var(--text-sm);
+	max-width: 68ch;
+}
+
+/* --- highlights -------------------------------------------------------- */
+.highlights {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+	margin: 0;
+	max-width: 72ch;
+}
+
+.highlights li {
+	position: relative;
+	padding-left: var(--space-5);
+	font-size: var(--text-sm);
+	color: var(--text-2);
+}
+
+.highlights li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.62em;
+	width: 6px;
+	height: 1px;
+	background: var(--accent);
+}
+
+/* --- stack ------------------------------------------------------------- */
+.stack {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin: 0;
+}
+
+.stack li {
+	font-family: var(--font-mono);
+	font-size: var(--text-xs);
+	color: var(--text-3);
+	padding: 2px var(--space-2);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-sm);
+}
+
+/* --- more -------------------------------------------------------------- */
+.more {
+	margin-top: clamp(2rem, 4vw, 3rem);
+	padding-left: calc(28px + var(--space-5));
+}
+
+.moreLink {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	font-weight: 600;
+	font-size: var(--text-sm);
+	color: var(--accent);
+}
+
+.moreLink svg {
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.moreLink:hover svg {
+	transform: translateX(4px);
+}
+
+@media (max-width: 620px) {
+	.item {
+		grid-template-columns: 18px minmax(0, 1fr);
+		gap: var(--space-4);
+	}
+
+	.more {
+		padding-left: calc(18px + var(--space-4));
+	}
+}

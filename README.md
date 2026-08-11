@@ -1,92 +1,70 @@
 # anushkamadushanka.github.io
 
-**My portfolio site.** A React + Vite single-page app with a 3D avatar that tracks the cursor, and an augmented-reality business card that turns a printed card into an interactive 3D panel in your camera.
+**My portfolio.** A React + Vite site with a WebGL avatar that tracks the cursor — loaded only once the browser is idle, so it never costs anyone a millisecond of first paint.
 
-[![Live site](https://img.shields.io/badge/🌐-anushkamadushanka.github.io-2ea44f)](https://anushkamadushanka.github.io)
-![React](https://img.shields.io/badge/React-18-61DAFB)
-![Vite](https://img.shields.io/badge/Vite-4-646CFF)
-![three.js](https://img.shields.io/badge/three.js-r158-000000)
-
-[<img src="https://raw.githubusercontent.com/AnushkaMadushanka/anushkamadushanka.github.com/main/docs/screenshot.webp" alt="anushkamadushanka.github.io — hero and My Story sections">](https://anushkamadushanka.github.io)
+[![Live site](https://img.shields.io/badge/🌐-anushkamadushanka.github.io-3ED8E8)](https://anushkamadushanka.github.io)
+![React](https://img.shields.io/badge/React-19-61DAFB)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF)
+![three.js](https://img.shields.io/badge/three.js-r185-000000)
 
 ---
 
-## The AR business card
+## What's interesting in here
 
-The piece I most enjoyed building. Visit **[/ar](https://anushkamadushanka.github.io/ar)** on a phone, point the camera at my printed business card, and a 3D panel anchors to it.
+**The critical path is ~110 KB gzipped.** No animation library, no particle canvas, no artificial splash delay. Everything that isn't text and CSS is deferred or removed.
 
-It's built on [MindAR](https://github.com/hiukim/mind-ar-js) doing marker tracking against a compiled `.mind` target, rendering through three.js. Once the anchor locks, the scene attaches:
+**Scroll reveals are pure CSS.** `animation-timeline: view()` runs them off the main thread, so there is no JavaScript on the scroll path at all — which is what keeps INP flat. The whole thing sits behind `@supports`, and the default state is *visible*, so no browser can ever leave content stuck at `opacity: 0`.
 
-- A **GLB button rig** — LinkedIn, GitHub, CV and home, each a named mesh
-- An **image plane** cycling through generated artwork, with a progress ring showing time to the next one
+**The avatar is a progressive enhancement, gated properly.** `useDeferredEnhancement` mounts the three.js scene only when the browser is idle *and* the device can afford it — desktop width, fine pointer, ≥4 GB memory, no Save-Data, no 2G, no `prefers-reduced-motion`. A touch device would pay 450 KB and a WebGL context for a head that tracks a cursor it doesn't have, so it doesn't.
 
-Interaction is raycast-based: a pointer-down builds normalised device coordinates from the click position, casts through the camera into the AR scene, and dispatches on the hit mesh's name (`button_linkedin`, `button_github`, `plane_ai_images`, …). So the buttons floating over the card are genuinely tappable 3D objects, not an HTML overlay pretending to be one.
+The static portrait underneath is the real content and always renders. The canvas is transparent and registers over the painted head, so if WebGL fails or the context is lost, the photo simply shows through — there's no error state to manage.
 
-Because `getUserMedia` requires a secure context, local development runs over HTTPS via `vite-plugin-mkcert` — otherwise the camera never initialises on `localhost`.
+**Dates are computed, never written down.** `duration()` derives every "3 yrs 5 mos" from the start and end months in `src/data/experience.js`. A previous version of this site hardcoded them and spent two years telling people I'd been in a role for "2 yrs 7 mos".
 
-## The rest of the site
+**Testimonial photos degrade to initials.** If a file is missing, the card renders the person's initials in the accent colour — a designed state rather than a broken image.
 
-**3D hero.** A GLB head model rendered with `@react-three/fiber` and `drei`, composited against a static portrait so the page still reads correctly before the model streams in.
+## Structure
 
-**Motion throughout.** Framer Motion drives scroll-triggered reveals with staggered delays across the hero, experience bento grid, projects and testimonials.
+```
+src/
+  data/          all content — profile, experience, work, projects, testimonials
+  components/
+    layout/      header (accessible disclosure menu), footer
+    sections/    hero, work, experience, projects, testimonials, contact
+    avatar/      the deferred three.js head
+    ui/          Section, Reveal
+  routes/        Home, About, NotFound
+  styles/        tokens.css, global.css
+```
 
-**Loading orchestration.** Every route is `React.lazy`-loaded, and a `LoadingContext` coordinates the splash screen. It holds the splash for a minimum window rather than flashing it — and `body-scroll-lock` freezes the page underneath so you can't scroll a half-rendered site.
+Content lives in `src/data/` and nowhere else. Adding a project is one object in `projects.js`; the card, the image fallback and the layout follow from it.
 
-**Contact form.** Formik + Yup validation, delivered through EmailJS, so the site stays fully static with no backend to run.
+## Accessibility
+
+Landmarks, one `<h1>` per page, a skip link, and a global `:focus-visible` style. The mobile menu is a real `<button>` with `aria-expanded` / `aria-controls`, closes on `Escape`, returns focus to the toggle, and is `inert` while closed. Every animation is CSS, so `prefers-reduced-motion` is honoured in the stylesheet rather than by a runtime provider.
 
 ## Running it
 
 ```bash
-git clone https://github.com/AnushkaMadushanka/anushkamadushanka.github.com.git
-cd anushkamadushanka.github.com
-yarn install
-yarn dev        # https://127.0.0.1:5173 — HTTPS, needed for the AR camera
+npm install
+npm run dev
 ```
 
 ```
-yarn build      production build to dist/
-yarn deploy     build and publish dist/ to the gh-pages branch
-yarn lint       eslint, zero warnings tolerated
+npm run build     production build to dist/
+npm run preview   serve the build locally
+npm run lint      eslint, zero warnings tolerated
 ```
+
+Pushing to `main` runs lint → build → deploy via GitHub Actions (`.github/workflows/deploy.yml`). Nothing reaches the site that doesn't compile.
 
 ## Stack
 
 | | |
 |---|---|
-| Framework | React 18, Vite 4 |
-| 3D | three.js, @react-three/fiber, @react-three/drei, GLTF/GLB assets |
-| AR | mind-ar (image target tracking) |
-| Motion | Framer Motion, react-particles / tsparticles |
-| Routing | react-router-dom 6, react-router-hash-link |
-| Forms | Formik, Yup, EmailJS |
-| Styling | CSS Modules |
-| Hosting | GitHub Pages via `gh-pages` |
-
-## Project layout
-
-```
-src/
-├── routes/
-│   ├── app/app.jsx           router, lazy routes, loading orchestration
-│   ├── home/                 hero, story, experience, projects, testimonials, contact
-│   ├── about/
-│   └── ar-visuals/           MindAR + three.js AR scene
-├── components/
-│   ├── hero/                 3D head model + intro
-│   ├── experience-bento/     work history grid
-│   ├── projects/             company and personal project lists
-│   ├── testimonials/
-│   ├── contact/              form + 3D waving model
-│   ├── navigation/
-│   └── background/           particle background
-└── context.js                loading context
-```
-
-## Branches
-
-- **`main`** — source (this branch)
-- **`gh-pages`** — built output, published by `yarn deploy`. Not edited by hand.
-
----
-
-Built by [Anushka Madushanka](https://anushkamadushanka.github.io) · [LinkedIn](https://www.linkedin.com/in/anushka-madushanka/)
+| Framework | React 19, Vite 8 |
+| Routing | react-router 7 |
+| 3D | three.js, @react-three/fiber |
+| Forms | EmailJS (the site stays fully static) |
+| Type | Syne + Outfit, self-hosted variable woff2 |
+| Hosting | GitHub Pages |

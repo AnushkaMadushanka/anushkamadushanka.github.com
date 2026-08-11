@@ -1,0 +1,272 @@
+/* Bento-style: the first card spans both columns, the rest sit beside it.
+   Weight follows importance rather than every project looking equal. */
+.grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.card {
+	display: flex;
+}
+
+.featured:first-child {
+	grid-column: 1 / -1;
+}
+
+.cardInner {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	background: var(--surface-1);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	transition: border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out),
+		box-shadow var(--dur) var(--ease-out);
+}
+
+a.cardInner:hover {
+	border-color: var(--accent-line);
+	transform: translateY(-3px);
+	box-shadow: var(--shadow-lg);
+}
+
+/* The first card goes side-by-side on wide screens. */
+.featured:first-child .cardInner {
+	flex-direction: row;
+	align-items: stretch;
+}
+
+/*
+ * With the first card spanning both columns, an even total leaves the last one
+ * orphaned in a half-width slot. Span it instead and lay it out horizontally,
+ * so the grid always resolves to full rows.
+ */
+.card:last-child:nth-child(even) {
+	grid-column: 1 / -1;
+}
+
+.card:last-child:nth-child(even) .cardInner {
+	flex-direction: row;
+	align-items: stretch;
+}
+
+.card:last-child:nth-child(even) .media {
+	width: 40%;
+	flex-shrink: 0;
+}
+
+.card:last-child:nth-child(even) .media img,
+.card:last-child:nth-child(even) .mediaFallback {
+	height: 100%;
+	aspect-ratio: auto;
+}
+
+/* --- media ------------------------------------------------------------- */
+.media {
+	position: relative;
+	background: var(--surface-2);
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.media img {
+	width: 100%;
+	/* `height: auto` is required: the width/height attributes (kept for CLS)
+	   map to a presentational height that would otherwise beat aspect-ratio. */
+	height: auto;
+	/* `cover` with a fixed ratio — the old cards stretched screenshots to
+	   whatever height the grid row happened to be. */
+	object-fit: cover;
+	object-position: top center;
+	aspect-ratio: 16 / 10;
+	transition: transform 600ms var(--ease-out);
+}
+
+a.cardInner:hover .media img {
+	transform: scale(1.03);
+}
+
+.featured:first-child .media {
+	width: 46%;
+}
+
+.featured:first-child .media img {
+	height: 100%;
+	aspect-ratio: auto;
+}
+
+/* --- empty media state ------------------------------------------------- */
+.mediaFallback {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-2);
+	height: 100%;
+	min-height: 200px;
+	aspect-ratio: 16 / 10;
+	background: radial-gradient(circle at 50% 40%, var(--accent-quiet), transparent 68%),
+		var(--surface-2);
+	border-right: 1px solid var(--border);
+}
+
+.featured:first-child .mediaFallback {
+	aspect-ratio: auto;
+}
+
+.fallbackMark {
+	display: grid;
+	place-items: center;
+	width: 64px;
+	height: 64px;
+	border: 1px solid var(--accent-line);
+	border-radius: var(--radius-lg);
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 2rem;
+	color: var(--accent);
+}
+
+.fallbackName {
+	font-family: var(--font-mono);
+	font-size: var(--text-xs);
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--text-3);
+}
+
+/* --- body -------------------------------------------------------------- */
+.body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+	padding: clamp(1.25rem, 2.5vw, 1.75rem);
+	flex: 1;
+}
+
+.meta {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	font-family: var(--font-mono);
+	font-size: var(--text-xs);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.company {
+	color: var(--accent);
+}
+
+.year {
+	color: var(--text-3);
+}
+
+.name {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	font-size: var(--text-lg);
+}
+
+.arrow {
+	font-size: 0.75em;
+	color: var(--text-3);
+	transition: transform var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
+}
+
+a.cardInner:hover .arrow {
+	color: var(--accent);
+	transform: translate(2px, -2px);
+}
+
+.summary {
+	color: var(--text-2);
+	font-size: var(--text-sm);
+}
+
+.contribution {
+	font-size: var(--text-sm);
+	color: var(--text-2);
+	padding-left: var(--space-4);
+	border-left: 2px solid var(--accent-line);
+}
+
+.contributionLabel {
+	display: block;
+	font-family: var(--font-mono);
+	font-size: var(--text-xs);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--accent);
+	margin-bottom: var(--space-1);
+}
+
+/* --- outcomes ---------------------------------------------------------- */
+.outcomes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin: var(--space-1) 0 0;
+}
+
+.outcomes li {
+	padding: var(--space-1) var(--space-3);
+	border-radius: var(--radius-sm);
+	background: var(--accent-quiet);
+	color: var(--accent);
+	font-size: var(--text-xs);
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+}
+
+/* --- stack ------------------------------------------------------------- */
+.stack {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin: auto 0 0;
+	padding-top: var(--space-3);
+}
+
+.stack li {
+	font-family: var(--font-mono);
+	font-size: var(--text-xs);
+	color: var(--text-3);
+	padding: 2px var(--space-2);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-sm);
+}
+
+.host {
+	font-family: var(--font-mono);
+	font-size: var(--text-xs);
+	color: var(--text-3);
+}
+
+/* --- responsive -------------------------------------------------------- */
+@media (max-width: 860px) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+
+	.featured:first-child .cardInner,
+	.card:last-child:nth-child(even) .cardInner {
+		flex-direction: column;
+	}
+
+	.featured:first-child .media,
+	.card:last-child:nth-child(even) .media {
+		width: 100%;
+	}
+
+	.featured:first-child .media img,
+	.card:last-child:nth-child(even) .media img,
+	.featured:first-child .mediaFallback,
+	.card:last-child:nth-child(even) .mediaFallback {
+		aspect-ratio: 16 / 10;
+		height: auto;
+	}
+}

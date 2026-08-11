@@ -1,0 +1,28 @@
+.main {
+	/* The header is fixed, so the page content starts below it. */
+	padding-top: var(--header-h);
+	outline: none;
+}
+
+.skipLink {
+	position: fixed;
+	top: var(--space-3);
+	left: var(--space-3);
+	z-index: 200;
+	padding: var(--space-3) var(--space-5);
+	background: var(--accent);
+	color: var(--on-accent);
+	font-weight: 600;
+	border-radius: var(--radius);
+	box-shadow: var(--shadow-lg);
+	transform: translateY(-160%);
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.skipLink:focus-visible {
+	transform: translateY(0);
+}
+
+.routeFallback {
+	min-height: 60svh;
+}

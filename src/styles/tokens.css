@@ -1,0 +1,92 @@
+/*
+ * Design tokens.
+ *
+ * The site commits to a single dark identity rather than declaring support for
+ * a light scheme it doesn't ship. `color-scheme: dark` below is the honest
+ * version of that — form controls and scrollbars render dark to match.
+ */
+
+:root {
+	color-scheme: dark;
+
+	/* --- ground and surfaces -------------------------------------------- */
+	/* Neutrals carry a slight blue-cyan bias so they sit with the accent
+	   rather than reading as flat grey. */
+	--bg: #0a0e13;
+	--bg-elevated: #0d121a;
+	--surface-1: #10161f;
+	--surface-2: #161f2a;
+	--surface-3: #1e2937;
+
+	--border: #1e2836;
+	--border-strong: #2c3a4a;
+
+	/* --- text ------------------------------------------------------------ */
+	--text: #e7eef3;
+	--text-2: #a3b4c0;
+	--text-3: #6e8090;
+
+	/* --- accent ---------------------------------------------------------- */
+	/* One accent, spent deliberately. The old site ran cyan and acid yellow
+	   at full saturation against each other; hierarchy comes from weight and
+	   surface elevation now instead. */
+	--accent: #3ed8e8;
+	--accent-strong: #12b8cc;
+	--accent-quiet: rgba(62, 216, 232, 0.11);
+	--accent-line: rgba(62, 216, 232, 0.28);
+	--on-accent: #04222a;
+
+	--positive: #4ade9b;
+
+	/* --- type ------------------------------------------------------------ */
+	--font-display: Syne, "Trebuchet MS", system-ui, sans-serif;
+	--font-body: Outfit, system-ui, -apple-system, "Segoe UI", sans-serif;
+	--font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+
+	/* Fluid scale — one ratio, no ad-hoc font sizes in components. */
+	--text-xs: 0.78rem;
+	--text-sm: 0.875rem;
+	--text-base: 1rem;
+	--text-md: clamp(1.05rem, 0.4vw + 0.95rem, 1.15rem);
+	--text-lg: clamp(1.25rem, 0.6vw + 1.1rem, 1.45rem);
+	--text-xl: clamp(1.5rem, 1vw + 1.25rem, 1.9rem);
+	--text-2xl: clamp(1.9rem, 2vw + 1.4rem, 2.6rem);
+	--text-3xl: clamp(2.4rem, 4vw + 1.4rem, 4rem);
+	--text-display: clamp(2.75rem, 7.5vw + 0.5rem, 6rem);
+
+	/* --- space ----------------------------------------------------------- */
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-5: 1.5rem;
+	--space-6: 2rem;
+	--space-7: 3rem;
+	--space-8: 4rem;
+	--space-9: 6rem;
+	--space-10: 8rem;
+
+	--section-gap: clamp(4.5rem, 10vw, 8rem);
+
+	/* --- shape ----------------------------------------------------------- */
+	--radius-sm: 6px;
+	--radius: 12px;
+	--radius-lg: 18px;
+	--radius-xl: 26px;
+	--radius-pill: 999px;
+
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+	--shadow: 0 4px 16px -6px rgba(0, 0, 0, 0.6);
+	--shadow-lg: 0 24px 60px -28px rgba(0, 0, 0, 0.85);
+	--glow: 0 0 0 1px var(--accent-line), 0 12px 40px -18px rgba(62, 216, 232, 0.5);
+
+	/* --- layout ---------------------------------------------------------- */
+	--container: 1140px;
+	--container-narrow: 760px;
+	--header-h: 68px;
+
+	/* --- motion ---------------------------------------------------------- */
+	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+	--dur-fast: 140ms;
+	--dur: 260ms;
+}
