@@ -1,0 +1,35 @@
+/*
+ * The default state is *visible*. Animation layers on top only where the
+ * browser supports scroll timelines and the visitor hasn't asked for less
+ * motion, so content can never be stuck invisible.
+ */
+.reveal {
+	opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	@supports (animation-timeline: view()) {
+		.reveal {
+			--reveal-i: 0;
+			animation: reveal linear both;
+			animation-timeline: view();
+			/* Staggered by shifting the scroll range per sibling. Finishes well
+			   before the element reaches mid-screen, so it's fully readable by
+			   the time it's worth reading. */
+			animation-range: entry calc(4% + var(--reveal-i) * 5%) cover
+				calc(30% + var(--reveal-i) * 5%);
+		}
+	}
+}
+
+@keyframes reveal {
+	from {
+		opacity: 0;
+		transform: translateY(18px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
