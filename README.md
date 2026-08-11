@@ -65,7 +65,7 @@ npm run preview   serve the build locally
 npm run lint      eslint, zero warnings tolerated
 ```
 
-Pushing to `main` runs lint → build → deploy via GitHub Actions (`.github/workflows/deploy.yml`). Nothing reaches the site that doesn't compile.
+Pushing to `main` runs lint and build in GitHub Actions (`.github/workflows/ci.yml`). Publishing is a separate step: `npm run deploy` builds and pushes `dist/` to the `gh-pages` branch, which is what GitHub Pages serves.
 
 ## Stack
 
