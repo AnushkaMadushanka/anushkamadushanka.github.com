@@ -6,6 +6,31 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://anushkamadushanka.github.io/work/uplist</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://anushkamadushanka.github.io/work/shopshare</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://anushkamadushanka.github.io/work/shoprecorder</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://anushkamadushanka.github.io/work/shopcast</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://anushkamadushanka.github.io/work/scales-of-faith</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://anushkamadushanka.github.io/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

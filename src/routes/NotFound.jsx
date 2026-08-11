@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { HiArrowLeft } from "react-icons/hi2";
 import { profile } from "../data/profile.js";
+import useMeta from "../lib/useMeta.js";
 import styles from "./NotFound.module.css";
 
 export default function NotFound() {
+	useMeta({ title: `Page not found — ${profile.name}` });
+
 	return (
 		<>
-			<title>Page not found — Anushka Madushanka</title>
-			<meta name="robots" content="noindex" />
-
 			<div className={`container ${styles.wrap}`}>
 				<p className={styles.code}>404</p>
 				<h1 className={styles.title}>That page doesn&rsquo;t exist</h1>

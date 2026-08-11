@@ -36,8 +36,8 @@ function Avatar({ name, photo }) {
 			className={styles.avatar}
 			src={photo}
 			alt=""
-			width="48"
-			height="48"
+			width="44"
+			height="44"
 			loading="lazy"
 			decoding="async"
 			onError={() => setFailed(true)}

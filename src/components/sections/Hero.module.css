@@ -63,8 +63,17 @@
 }
 
 /* --- copy -------------------------------------------------------------- */
+/*
+ * No max-width here. A `ch`-based measure on this wrapper resolved to ~357px
+ * and the display-weight <h1> simply overflowed it — invisible on desktop
+ * because the hero clips, but it pushed the name off-screen on a phone.
+ * Reading measure belongs on the paragraph, not on the column.
+ */
 .copy {
-	max-width: 34ch;
+	min-width: 0;
+	/* Makes the column itself queryable, so the name can be sized against the
+	   space it actually has rather than against the viewport. */
+	container-type: inline-size;
 }
 
 .availability {
@@ -91,10 +100,28 @@
 	flex-shrink: 0;
 }
 
+/*
+ * The longest word — "Madushanka" — measures ~10.26x the font size in Syne
+ * ExtraBold after letter-spacing, so it fits whenever
+ * font-size <= container width / 10.26 (that is, 9.74cqi).
+ *
+ * Sizing against the container rather than the viewport means this holds at
+ * every width, in both the stacked and two-column layouts, with no breakpoint
+ * to keep in sync. 9.4cqi leaves a little headroom.
+ *
+ * The viewport-based clamp is the fallback for engines without container
+ * queries; it is deliberately conservative since it can't know the column.
+ */
 .name {
-	font-size: var(--text-3xl);
+	font-size: clamp(1.75rem, 7.4vw, 3.25rem);
 	margin-bottom: var(--space-3);
 	letter-spacing: -0.035em;
+}
+
+@supports (container-type: inline-size) {
+	.name {
+		font-size: min(4rem, 9.4cqi);
+	}
 }
 
 .role {
@@ -198,6 +225,24 @@
 	isolation: isolate;
 }
 
+/*
+ * The image and the WebGL head are revealed as one. Fading them in separately
+ * showed the head materialising over an empty frame, or the portrait sitting
+ * alone for a beat before the model landed on top of it.
+ */
+.portraitMedia {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	transition: opacity 500ms var(--ease-out);
+}
+
+.portraitMediaReady {
+	opacity: 1;
+}
+
+/* The stylised avatar is a cut-out with its own glow baked in, so it sits on
+   the background unframed. */
 .portraitImg {
 	width: 100%;
 	height: 100%;
@@ -205,22 +250,70 @@
 }
 
 /*
+ * The real photo is a rectangular studio shot, so it needs a frame to belong
+ * here. It borrows the card language used everywhere else on the site —
+ * large radius, hairline border — plus the cyan bloom the avatar carries, so
+ * the two portraits read as the same slot rather than two different designs.
+ */
+.portraitPhoto {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 20%;
+	border-radius: var(--radius-xl);
+	border: 1px solid var(--border-strong);
+	box-shadow: 0 24px 60px -34px rgba(62, 216, 232, 0.45), var(--shadow-lg);
+}
+
+/* --- loader ------------------------------------------------------------ */
+.portraitLoader {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	pointer-events: none;
+}
+
+.spinner {
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	border: 2px solid var(--border-strong);
+	border-top-color: var(--accent);
+	animation: spin 700ms linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(1turn);
+	}
+}
+
+/*
+ * global.css stops all animation under `prefers-reduced-motion` with
+ * `!important`, so the spinner would otherwise sit frozen mid-rotation and
+ * read as broken. A plain, evenly-weighted ring reads as a placeholder
+ * instead of a stalled spinner.
+ */
+@media (prefers-reduced-motion: reduce) {
+	.spinner {
+		border-color: var(--accent-line);
+		opacity: 0.8;
+	}
+}
+
+/*
  * The WebGL head has to register over the head painted into the portrait,
  * which sits higher in the frame than the 3D model's head lands by default.
  * The offset is a fraction of the frame so it holds at every width.
  */
+/* Opacity is handled by `.portraitMedia`, which fades the head and the
+   photo in together. */
 .canvas {
 	position: absolute;
 	inset: -11.5% 0 0;
 	z-index: 1;
-	opacity: 0;
-	transition: opacity 400ms var(--ease-out);
 	pointer-events: none;
-}
-
-/* Faded in once the model is loaded, so it never pops in half-drawn. */
-.canvasReady {
-	opacity: 1;
 }
 
 /* --- metrics ----------------------------------------------------------- */
@@ -266,35 +359,28 @@
 }
 
 /* --- responsive -------------------------------------------------------- */
-@media (max-width: 900px) {
+@media (max-width: 1023px) {
 	.inner {
 		grid-template-columns: 1fr;
-		text-align: left;
+		gap: var(--space-5);
 	}
 
-	.copy {
-		max-width: none;
-		order: 2;
-	}
+	/* The portrait isn't rendered at all below this width (see Hero.jsx), so
+	   the hero leads with the name and the CTAs sit higher on a phone. */
 
-	.portrait {
-		order: 1;
-		justify-content: flex-start;
-	}
-
-	.portraitFrame {
-		width: min(58%, 260px);
+	.tagline {
+		max-width: 52ch;
 	}
 }
 
-@media (max-width: 520px) {
-	.actions {
-		flex-direction: column;
-		align-items: stretch;
-	}
-
-	.primary,
-	.secondary {
-		justify-content: center;
+@media (max-width: 600px) {
+	.metrics {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
+
+/*
+ * No forced full-width stacking for the actions. `.actions` already wraps, so
+ * on a narrow screen the buttons drop to a second line at their natural width,
+ * which reads better than two full-bleed bars.
+ */

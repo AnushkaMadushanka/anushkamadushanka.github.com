@@ -83,6 +83,10 @@ export default function Avatar3D({ className, onReady }) {
 		 */
 		<div className={className} aria-hidden="true">
 			<Canvas
+				style={{
+					position: "absolute",
+					top: -60
+				}}
 				dpr={[1, 1.75]}
 				camera={{ position: [0, 1.7, 0.66], fov: 50 }}
 				gl={{ antialias: true, powerPreference: "low-power", alpha: true }}

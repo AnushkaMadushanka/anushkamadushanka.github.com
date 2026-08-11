@@ -23,6 +23,10 @@ The static portrait underneath is the real content and always renders. The canva
 
 **Testimonial photos degrade to initials.** If a file is missing, the card renders the person's initials in the accent colour — a designed state rather than a broken image.
 
+**Every route is a real HTML file.** `scripts/prerender.mjs` runs after the build and emits `dist/work/shopshare/index.html` and friends, each with its own title, description, canonical and Open Graph tags. Google runs JavaScript; Slack, LinkedIn and iMessage do not — without this, sharing a case study link would preview the home page. It also means those URLs load in one hop instead of bouncing through the `404.html` redirect.
+
+At runtime `useMeta` *updates* those same tags rather than rendering new ones. React 19 can hoist `<title>` and `<meta>` from a component, but it appends to what the document already declares, which leaves two canonicals fighting each other.
+
 ## Structure
 
 ```
@@ -33,11 +37,16 @@ src/
     sections/    hero, work, experience, projects, testimonials, contact
     avatar/      the deferred three.js head
     ui/          Section, Reveal
-  routes/        Home, About, NotFound
+  routes/        Home, About, WorkDetail, NotFound
+  lib/           useMeta, useDeferredEnhancement
   styles/        tokens.css, global.css
+scripts/
+  prerender.mjs  per-route static HTML, run as part of `npm run build`
 ```
 
 Content lives in `src/data/` and nowhere else. Adding a project is one object in `projects.js`; the card, the image fallback and the layout follow from it.
+
+A product in `work.js` gets a case study page at `/work/<slug>` as soon as you give it a `caseStudy` object — the route, the card link and the "more work" cross-links all follow. Without one, the card links straight out to the live product instead. Add a route to `scripts/prerender.mjs` at the same time so the new page gets its own static meta.
 
 ## Accessibility
 
