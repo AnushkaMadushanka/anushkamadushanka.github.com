@@ -1,8 +1,17 @@
 .hero {
 	position: relative;
-	/* Bottom padding stays small — the metrics strip already closes the hero,
-	   and the next section brings its own generous top padding. */
-	padding-block: clamp(2.5rem, 7vw, 5rem) 0;
+	/*
+	 * This sat at 0 while the metrics strip closed the hero: a bordered, filled
+	 * block that carried its own top margin and gave the section a floor. With
+	 * the strip gone the section needs its own bottom padding, and it is a
+	 * single symmetric value rather than a pair: the hero is the one section
+	 * whose space reads as a frame around the content, so an uneven top and
+	 * bottom is visible as a mistake in a way it never is mid-page.
+	 *
+	 * The fixed header overlays the first 70px and the hero starts at 68, so the
+	 * two edges land within 2px of each other in practice.
+	 */
+	padding-block: clamp(2.5rem, 7vw, 5rem);
 	overflow: hidden;
 }
 
@@ -17,8 +26,7 @@
 	.tagline,
 	.actions,
 	.socials,
-	.portrait,
-	.metrics {
+	.portrait {
 		animation: hero-in 0.62s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 		animation-delay: calc(var(--i, 0) * 70ms);
 	}
@@ -220,7 +228,7 @@
 
 .portraitFrame {
 	position: relative;
-	width: min(100%, 380px);
+	width: min(100%, 440px);
 	aspect-ratio: 379 / 403;
 	isolation: isolate;
 }
@@ -316,48 +324,6 @@
 	pointer-events: none;
 }
 
-/* --- metrics ----------------------------------------------------------- */
-.metrics {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-	gap: 1px;
-	margin-top: clamp(3rem, 7vw, 5rem);
-	background: var(--border);
-	border: 1px solid var(--border);
-	border-radius: var(--radius-lg);
-	overflow: hidden;
-}
-
-.metric {
-	display: flex;
-	flex-direction: column;
-	gap: var(--space-1);
-	padding: var(--space-5);
-	background: var(--surface-1);
-}
-
-.metricValue {
-	font-family: var(--font-display);
-	font-weight: 800;
-	font-size: var(--text-xl);
-	line-height: 1;
-	color: var(--accent);
-	font-variant-numeric: tabular-nums;
-	letter-spacing: -0.03em;
-}
-
-.metricLabel {
-	font-size: var(--text-sm);
-	font-weight: 600;
-	color: var(--text);
-}
-
-.metricDetail {
-	font-size: var(--text-xs);
-	color: var(--text-3);
-	line-height: 1.45;
-}
-
 /* --- responsive -------------------------------------------------------- */
 @media (max-width: 1023px) {
 	.inner {
@@ -370,12 +336,6 @@
 
 	.tagline {
 		max-width: 52ch;
-	}
-}
-
-@media (max-width: 600px) {
-	.metrics {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
 

@@ -1,9 +1,9 @@
 import { lazy, Suspense, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HiArrowUpRight, HiOutlineDocumentText } from "react-icons/hi2";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn, FaItchIo } from "react-icons/fa6";
 
-import { profile, metrics } from "../../data/profile.js";
+import { profile } from "../../data/profile.js";
 import useDeferredEnhancement from "../../lib/useDeferredEnhancement.js";
 import useMediaQuery from "../../lib/useMediaQuery.js";
 import AvatarBoundary from "../avatar/AvatarBoundary.jsx";
@@ -95,10 +95,6 @@ export default function Hero() {
 
             <div className={`container ${styles.inner}`}>
                 <div className={styles.copy}>
-                    {/* <p className={styles.availability} style={{ "--i": 0 }}>
-                        <span className={styles.dot} aria-hidden="true" />
-                        {profile.availability}
-                    </p> */}
 
                     <h1 id="hero-heading" className={styles.name} style={{ "--i": 1 }}>
                         {profile.name}
@@ -155,6 +151,17 @@ export default function Hero() {
                                 <span>LinkedIn</span>
                             </a>
                         </li>
+                        <li>
+                            <a
+                                href={profile.links.itch}
+                                target="_blank"
+                                rel="noreferrer"
+                                className={styles.iconLink}
+                            >
+                                <FaItchIo aria-hidden="true" />
+                                <span>itch.io</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 {/* Two independent gates, deliberately: the portrait follows the
@@ -205,22 +212,6 @@ export default function Hero() {
                         </div>
                     </div>
                 )}
-            </div>
-
-            <div className="container">
-                <ul className={styles.metrics} style={{ "--i": 6 }}>
-                    {metrics.map((m) => (
-                        <li key={m.label} className={styles.metric}>
-                            <span className={styles.metricValue}>
-                                {m.prefix}
-                                {m.value}
-                                {m.suffix}
-                            </span>
-                            <span className={styles.metricLabel}>{m.label}</span>
-                            <span className={styles.metricDetail}>{m.detail}</span>
-                        </li>
-                    ))}
-                </ul>
             </div>
         </section>
     );

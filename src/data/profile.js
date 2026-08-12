@@ -14,20 +14,10 @@ function monthsSince(isoMonth) {
 }
 
 /**
- * Completed years since `CAREER_START`, floored — the number for the metric
- * tile, which renders it as "n+".
+ * The span since `CAREER_START`, written for prose: "over eight years",
+ * "nearly nine years", "nine years".
  *
- * Floored rather than rounded: rounding turned 8 years 11 months into a flat
- * "9 years", which the dated experience list directly below it contradicts.
- */
-export function yearsSince(isoMonth = CAREER_START) {
-	return Math.floor(monthsSince(isoMonth) / 12);
-}
-
-/**
- * The same span written for prose — "nearly nine years", "nine years".
- *
- * A single floored number is honest but sells the last eleven months short, and
+ * Flooring the number is honest but sells the last eleven months short, and
  * "8+ years" reads weaker than the truth. This says whichever of the three is
  * actually true today, so the copy stays accurate through every rollover
  * without anyone remembering to edit it.
@@ -93,10 +83,14 @@ export const profile = {
 	site: "https://anushkamadushanka.github.io",
 };
 
-/** Headline numbers. Each one is traceable to something real. */
-export const metrics = [
-	{ value: yearsSince(), suffix: "+", label: "Years shipping", detail: "Production web and mobile since 2017" },
-	{ value: "2,106", suffix: "", label: "Creators served", detail: "On the ShopShare platform I led" },
-	{ value: "9", prefix: "$", suffix: "k", label: "MRR reached", detail: "412 paying subscribers, 1.29% churn" },
-	{ value: "33", suffix: "", label: "Releases shipped", detail: "Of Uplist, Ray White's property app" },
-];
+/*
+ * No headline-metrics export here, on purpose.
+ *
+ * The hero used to close on a four-tile strip: years, creators, MRR, releases.
+ * Every one of those numbers already appears in the case study or the
+ * experience entry it came from, where the reader has the story that makes it
+ * mean something. As bare tiles they lost that. "33 releases" is an activity
+ * count with no outcome attached, and "$9k MRR" reads small until you know it
+ * came from restructuring one flat plan into four tiers. Each number now
+ * appears exactly once, next to its cause.
+ */

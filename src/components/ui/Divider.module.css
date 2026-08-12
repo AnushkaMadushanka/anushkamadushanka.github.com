@@ -1,0 +1,128 @@
+/*
+ * The seam between the hero and the first section.
+ *
+ * With the metrics strip gone the hero ends on a row of small muted links, and
+ * the ~210px to the next heading read as a void rather than as a break. A mark
+ * placed inside that space splits it into two shorter gaps and gives the eye
+ * something to travel through, so the distance stops registering as emptiness.
+ *
+ * Full-bleed rather than container-width: the line has to reach the viewport
+ * edges to read as a seam in the page. A rule that stops at the container reads
+ * as an underline belonging to the hero.
+ */
+.divider {
+	position: relative;
+	/* Pulls the rule down off the exact section boundary so it sits centred in
+	   the gap. The hero contributes less padding below its content than the next
+	   section contributes above its heading, so a rule left at the boundary
+	   would sit noticeably high. */
+	margin-top: clamp(2rem, 3vw, 3rem);
+	height: 1px;
+	/* Bright at the centre, fading out entirely before the edges. The ends
+	   dissolve into the page instead of terminating against it. */
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--border) 22%,
+		var(--accent-line) 42%,
+		var(--accent) 50%,
+		var(--accent-line) 58%,
+		var(--border) 78%,
+		transparent 100%
+	);
+	/* Decorative: `aria-hidden` on the element keeps it out of the tree, and it
+	   must never intercept a click meant for the sections either side. */
+	pointer-events: none;
+}
+
+/*
+ * The bloom. Same radial-gradient language as the hero's own glow, so the seam
+ * reads as the tail of that light rather than as a new decoration, and it
+ * gives the centre of the rule some vertical presence. A bare 1px line in the
+ * middle of 200px of dark does not break the space up on its own.
+ */
+.divider::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: min(680px, 80vw);
+	height: 140px;
+	transform: translate(-50%, -50%);
+	background: radial-gradient(
+		ellipse at 50% 50%,
+		rgba(62, 216, 232, 0.13) 0%,
+		rgba(62, 216, 232, 0.05) 38%,
+		transparent 72%
+	);
+	pointer-events: none;
+}
+
+/*
+ * A single bright node on the seam, sitting in the bloom. This is the thing the
+ * eye actually lands on; the rule and the glow are context for it.
+ */
+.divider::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 5px;
+	height: 5px;
+	transform: translate(-50%, -50%) rotate(45deg);
+	background: var(--accent);
+	box-shadow: 0 0 0 4px rgba(62, 216, 232, 0.14), 0 0 18px 2px rgba(62, 216, 232, 0.5);
+	pointer-events: none;
+}
+
+/*
+ * A slow sweep of light along the rule. Deliberately long and low-contrast: it
+ * should be the kind of movement you notice on the second look, not something
+ * competing with the CTAs directly above it.
+ *
+ * Animating `background-position` on a gradient composites on the main thread,
+ * so this is a separate absolutely-positioned layer moved with `transform`
+ * instead, because the whole page is one long scroll and this element is on screen for
+ * a good part of it.
+ */
+.sheen {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 28%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(62, 216, 232, 0.55), transparent);
+	opacity: 0;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.sheen {
+		animation: sweep 7s var(--ease-out) infinite;
+	}
+}
+
+@keyframes sweep {
+	0% {
+		transform: translateX(0);
+		opacity: 0;
+	}
+
+	/* Fades up and back down well inside the travel, so the sheen is never
+	   visible at the moment it wraps from one end to the other. */
+	22%,
+	78% {
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateX(257%);
+		opacity: 0;
+	}
+}
+
+@media (max-width: 600px) {
+	.divider::before {
+		height: 96px;
+	}
+}
