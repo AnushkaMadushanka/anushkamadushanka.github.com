@@ -1,0 +1,166 @@
+/*
+ * One card, shared by the Games section and Side projects. They render the
+ * same shape (media, blurb, tags, one quiet link and one accent link) so
+ * the two grids read as one system rather than two similar ones.
+ */
+.card {
+	display: flex;
+	flex-direction: column;
+	background: var(--surface-1);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	transition: border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+}
+
+.card:hover {
+	border-color: var(--border-strong);
+	transform: translateY(-3px);
+}
+
+/* --- media ------------------------------------------------------------- */
+.media {
+	background: var(--surface-2);
+	border-bottom: 1px solid var(--border);
+}
+
+.media img {
+	width: 100%;
+	/* `height: auto` is required: the width/height attributes (kept for CLS)
+	   map to a presentational height that would otherwise beat aspect-ratio. */
+	height: auto;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	object-position: top center;
+}
+
+.placeholder {
+	display: grid;
+	place-items: center;
+	aspect-ratio: 16 / 10;
+	background: radial-gradient(circle at 50% 45%, var(--accent-quiet), transparent 70%),
+		var(--surface-2);
+}
+
+.placeholder span {
+	font-family: var(--font-display);
+	font-weight: 800;
+	font-size: 2.4rem;
+	letter-spacing: -0.04em;
+	color: var(--accent);
+	opacity: 0.75;
+}
+
+/* --- body -------------------------------------------------------------- */
+.body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+	padding: var(--space-5);
+	flex: 1;
+}
+
+.name {
+	font-size: var(--text-md);
+}
+
+/* --- jam credit -------------------------------------------------------- */
+.jam {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding-left: var(--space-3);
+	border-left: 2px solid var(--accent-line);
+	font-size: var(--text-xs);
+	line-height: 1.4;
+}
+
+.jam a {
+	font-family: var(--font-mono);
+	letter-spacing: 0.04em;
+	color: var(--accent);
+	transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.jam a:hover {
+	opacity: 0.75;
+}
+
+.jamTheme {
+	color: var(--text-3);
+}
+
+.blurb {
+	font-size: var(--text-sm);
+	color: var(--text-2);
+}
+
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin: 0;
+}
+
+.tags li {
+	font-family: var(--font-mono);
+	font-size: var(--text-xs);
+	color: var(--text-3);
+	padding: 2px var(--space-2);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-sm);
+}
+
+/* --- links ------------------------------------------------------------- */
+.links {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-4);
+	margin-top: auto;
+	padding-top: var(--space-4);
+	border-top: 1px solid var(--border);
+}
+
+.repoLink,
+.pageLink,
+.demoLink {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	font-size: var(--text-sm);
+	font-weight: 600;
+	transition: color var(--dur-fast) var(--ease-out);
+}
+
+.repoLink,
+.pageLink {
+	color: var(--text-2);
+}
+
+.repoLink:hover,
+.pageLink:hover {
+	color: var(--text);
+}
+
+/* The card's accent slot belongs to the playable build, so the case study sits
+   in the quiet slot where the repo link normally goes. */
+.pageLink svg {
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.pageLink:hover svg {
+	transform: translateX(3px);
+}
+
+.demoLink {
+	color: var(--accent);
+}
+
+.demoLink svg {
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.demoLink:hover svg {
+	transform: translate(2px, -2px);
+}

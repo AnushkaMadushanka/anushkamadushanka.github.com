@@ -1,61 +1,10 @@
 const GH = "https://github.com/AnushkaMadushanka";
 
 /**
- * Game jam entries, as recorded on each game's itch.io page.
- *
- * The theme matters more than the jam's name: it's the constraint the design
- * had to answer, so a card that names it explains why the game is shaped the
- * way it is rather than just claiming a badge.
- */
-const jams = {
-	gmtk2022: {
-		name: "GMTK Game Jam 2022",
-		theme: "Roll of the Dice",
-		note: "48 hours, 6,013 entries",
-		href: "https://itch.io/jam/gmtk-jam-2022",
-	},
-	gameName: {
-		name: "$5K GameName Game Jam",
-		theme: "Invincible",
-		note: "343 entries",
-		href: "https://itch.io/jam/game-name-game-jam-1",
-	},
-	honeydew: {
-		name: "GameDevNetwork: Honeydew Jam",
-		theme: "Where is Everybody?",
-		href: "https://itch.io/jam/gamedevnetwork-honeydew-jam",
-	},
-};
-
-/**
  * Things built outside work. Ordered by how much they demonstrate. Each card
  * links straight to the repo, where the README carries the full write-up.
  */
 export const projects = [
-	{
-		name: "Hotfixed to Death",
-		blurb:
-			"A first-person boss fight against a live-service dev team: win a round and they ship a hotfix aimed at you. The patch notes are real — every line is one of 24 modifiers rolled from a tiered pool, written into a live serialised field, and compounding across all ten rounds.",
-		jam: jams.gameName,
-		tags: ["Unity 6", "C#", "URP", "Game design", "WebGL"],
-		image: "/work/hotfixed-to-death/minions.webp",
-		/* Private repo — the card links to the case study here instead. */
-		repo: null,
-		page: "/work/hotfixed-to-death",
-		demo: "https://anushka-madushanka.itch.io/hotfixed-to-death",
-		demoLabel: "Play on itch.io",
-	},
-	{
-		name: "Ape Dansala",
-		blurb:
-			"A Vesak dansala served under pressure — three minutes to give away free soda and ice cream on a Sri Lankan street, from a tray that holds one kind of item at a time. Global leaderboard on Unity Gaming Services, with anonymous sign-in and a Cloud Code name registry.",
-		tags: ["Unity 6", "C#", "Unity Gaming Services", "URP", "WebGL"],
-		image: "/work/ape-dansala/main-menu.webp",
-		repo: null,
-		page: "/work/ape-dansala",
-		demo: "https://anushka-madushanka.itch.io/ape-dansala",
-		demoLabel: "Play on itch.io",
-	},
 	{
 		name: "Markerless Motion Capture",
 		blurb:
@@ -89,28 +38,6 @@ export const projects = [
 		demo: null,
 	},
 	{
-		name: "Ludo Shooter",
-		blurb:
-			"A wave shooter where reloading rolls a dice — and whatever face it lands on rewrites the rules of the fight. Tying the roll to reloading made the theme a decision rather than a coin flip: you choose when to gamble.",
-		jam: jams.gmtk2022,
-		tags: ["Unity", "C#", "URP", "Game design"],
-		image: "/projects/ludo-shooter.webp",
-		repo: `${GH}/ludo-shooter`,
-		demo: "https://anushka-madushanka.itch.io/ludo-shooter",
-		demoLabel: "Download on itch.io",
-	},
-	{
-		name: "Operation Alone",
-		blurb:
-			"Top-down zombie shooter set in a maze that's different every time — Hunt-and-Kill generation with NavMesh-driven AI. You are the only survivor of a city-wide infection, working through the sewers alone.",
-		jam: jams.honeydew,
-		tags: ["Unity", "C#", "Procedural generation", "NavMesh"],
-		image: "/projects/operation-alone.webp",
-		repo: `${GH}/Operation-Alone`,
-		demo: "https://anushka-madushanka.itch.io/operation-alone",
-		demoLabel: "Download on itch.io",
-	},
-	{
 		name: "SQL Dummy Data Generator",
 		blurb:
 			"Fills any SQL Server table with realistic test data: reads your schema, respects foreign keys, then bulk-inserts or exports .sql.",
@@ -127,15 +54,6 @@ export const projects = [
 		tags: ["three.js", "WebAssembly", "Web Workers", "React", "Node.js"],
 		image: null,
 		repo: `${GH}/virtual-showroom`,
-		demo: null,
-	},
-	{
-		name: "Nightmarescape",
-		blurb:
-			"First-person endless runner for mobile, built in Unity with URP and shipped to Google Play.",
-		tags: ["Unity", "C#", "URP", "Android"],
-		image: "/projects/nightmarescape.webp",
-		repo: `${GH}/nightmarescape`,
 		demo: null,
 	},
 	{

@@ -1,6 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { HiArrowDown, HiArrowUpRight, HiOutlineDocumentText } from "react-icons/hi2";
+import { HiArrowUpRight, HiOutlineDocumentText } from "react-icons/hi2";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 
 import { profile, metrics } from "../../data/profile.js";
@@ -112,14 +112,23 @@ export default function Hero() {
                         {profile.tagline}
                     </p>
 
+                    {/* The second slot went to "See the work", which pointed at the
+                        very next section, already reachable by the nav and by
+                        simply scrolling. The résumé is the thing a hiring manager
+                        actually came for, so it takes the slot instead. */}
                     <div className={styles.actions} style={{ "--i": 4 }}>
                         <Link to="/#contact" className={styles.primary}>
                             Get in touch
                             <HiArrowUpRight aria-hidden="true" />
                         </Link>
-                        <a href="#work" className={styles.secondary}>
-                            See the work
-                            <HiArrowDown aria-hidden="true" />
+                        <a
+                            href={profile.links.cv}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={styles.secondary}
+                        >
+                            Download résumé
+                            <HiOutlineDocumentText aria-hidden="true" />
                         </a>
                     </div>
 
@@ -144,17 +153,6 @@ export default function Hero() {
                             >
                                 <FaLinkedinIn aria-hidden="true" />
                                 <span>LinkedIn</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href={profile.links.cv}
-                                target="_blank"
-                                rel="noreferrer"
-                                className={`${styles.iconLink} ${styles.cvLink}`}
-                            >
-                                <HiOutlineDocumentText aria-hidden="true" />
-                                <span>Download résumé</span>
                             </a>
                         </li>
                     </ul>

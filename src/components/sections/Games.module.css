@@ -1,7 +1,7 @@
 /*
- * Given its own band rather than a card in the projects grid — the game is the
- * most technically involved thing on the site and shouldn't sit seventh in a
- * list. The tinted ground separates it from the sections either side.
+ * A tinted band, so six games read as one body of work rather than as more
+ * cards in the same endless grid. The ground separates it from the sections
+ * either side without needing a heavier divider.
  */
 .section {
 	position: relative;
@@ -16,25 +16,12 @@
 }
 
 .eyebrow {
-	display: inline-flex;
-	align-items: center;
-	gap: var(--space-3);
 	font-family: var(--font-mono);
 	font-size: var(--text-xs);
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
 	color: var(--accent);
 	margin-bottom: var(--space-4);
-}
-
-/* Live-status dot, matching the availability pill in the hero. */
-.pulse {
-	width: 7px;
-	height: 7px;
-	border-radius: 50%;
-	background: var(--positive);
-	box-shadow: 0 0 0 3px rgba(74, 222, 155, 0.16);
-	flex-shrink: 0;
 }
 
 .title {
@@ -48,13 +35,81 @@
 	max-width: 60ch;
 }
 
+.lede a {
+	color: var(--accent);
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+	text-decoration-thickness: 1px;
+	text-decoration-color: var(--accent-line);
+	transition: text-decoration-color var(--dur-fast) var(--ease-out);
+}
+
+.lede a:hover {
+	text-decoration-color: var(--accent);
+}
+
+/* --- featured ---------------------------------------------------------- */
+/* Raised off the band on its own surface: it has to stay visibly the lead
+   item now that five sibling cards sit directly beneath it. */
+.featured {
+	padding: clamp(1.25rem, 3vw, 2rem);
+	margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+	background: var(--surface-1);
+	border: 1px solid var(--border);
+	border-top: 2px solid var(--accent-line);
+	border-radius: var(--radius-xl);
+}
+
+.status {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-3);
+	font-family: var(--font-mono);
+	font-size: var(--text-xs);
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--accent);
+	margin-bottom: var(--space-3);
+}
+
+/* Live-status dot, matching the availability pill in the hero. */
+.pulse {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--positive);
+	box-shadow: 0 0 0 3px rgba(74, 222, 155, 0.16);
+	flex-shrink: 0;
+}
+
+.featuredName {
+	font-size: var(--text-xl);
+	letter-spacing: -0.02em;
+	margin-bottom: var(--space-3);
+}
+
+.featuredName a {
+	transition: color var(--dur-fast) var(--ease-out);
+}
+
+.featuredName a:hover {
+	color: var(--accent);
+}
+
+.featuredLede {
+	font-size: var(--text-sm);
+	color: var(--text-2);
+	max-width: 68ch;
+	margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
 /* --- showcase ---------------------------------------------------------- */
 .showcase {
 	display: grid;
 	grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.45fr);
 	gap: clamp(1rem, 2.5vw, 1.75rem);
 	align-items: stretch;
-	margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+	margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
 .shot {
@@ -107,7 +162,7 @@
 	flex: 1;
 	justify-content: center;
 	padding: var(--space-4) var(--space-5);
-	background: var(--surface-1);
+	background: var(--surface-2);
 }
 
 .factLabel {
@@ -127,35 +182,30 @@
 /* --- highlights -------------------------------------------------------- */
 .highlights {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-	gap: clamp(1rem, 2vw, 1.5rem);
-	margin: 0;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+	gap: clamp(0.75rem, 1.5vw, 1.25rem);
+	margin: 0 0 clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
 .highlight {
 	display: flex;
 	flex-direction: column;
 	gap: var(--space-2);
-	padding: var(--space-5);
-	background: var(--surface-1);
+	padding: var(--space-4) var(--space-5);
+	background: var(--surface-2);
 	border: 1px solid var(--border);
 	border-radius: var(--radius);
-	border-top: 2px solid var(--accent-line);
 }
 
-.highlight h3 {
-	font-size: var(--text-md);
-	line-height: 1.25;
+.highlight h4 {
+	font-size: var(--text-sm);
+	line-height: 1.3;
 }
 
 .highlight p {
-	font-size: var(--text-sm);
+	font-size: var(--text-xs);
+	line-height: 1.55;
 	color: var(--text-2);
-}
-
-/* --- more -------------------------------------------------------------- */
-.more {
-	margin-top: clamp(1.75rem, 3vw, 2.5rem);
 }
 
 .moreLink {
@@ -173,6 +223,13 @@
 
 .moreLink:hover svg {
 	transform: translateX(4px);
+}
+
+/* --- the rest ---------------------------------------------------------- */
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+	gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 @media (max-width: 860px) {

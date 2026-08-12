@@ -1,6 +1,6 @@
 import Hero from "../components/sections/Hero.jsx";
 import Work from "../components/sections/Work.jsx";
-import CurrentBuild from "../components/sections/CurrentBuild.jsx";
+import Games from "../components/sections/Games.jsx";
 import Experience from "../components/sections/Experience.jsx";
 import Projects from "../components/sections/Projects.jsx";
 import Testimonials from "../components/sections/Testimonials.jsx";
@@ -18,12 +18,13 @@ export default function Home() {
 	return (
 		<>
 			{/* Commercial evidence and career history together, then personal
-			    work, then social proof. The game leads the personal group
-			    because it is far stronger than the other side projects. */}
+			    work, then social proof. Games are grouped into one band ahead of
+			    the smaller engineering projects; six together read as a practice,
+			    where interleaved they read as clutter. */}
 			<Hero />
 			<Work />
 			<Experience />
-			<CurrentBuild />
+			<Games />
 			<Projects />
 			<Testimonials />
 			<Contact />
