@@ -23,7 +23,17 @@ export default function WorkDetail() {
 	   the 404 rather than rendering an empty shell. */
 	if (!cs) return <NotFound />;
 
-	const others = caseStudies.filter((w) => w.slug !== slug);
+	/* Capped, and rotated to start just after this item rather than at the top
+	   of the registry. Taking the first four of a fixed list would show almost
+	   the same suggestions on every page, and would never link the two games to
+	   each other, since they sit at the end behind four employer products. */
+	const here = caseStudies.findIndex((w) => w.slug === slug);
+	/* Three, because the grid is three columns wide at desktop and a fourth card
+	   wraps to a row on its own. */
+	const others = Array.from(
+		{ length: Math.min(3, caseStudies.length - 1) },
+		(_, i) => caseStudies[(here + 1 + i) % caseStudies.length],
+	);
 
 	/* Newer entries carry a `links` array; older ones a single href. */
 	const links = item.links ?? (item.href ? [{ href: item.href, label: item.hrefLabel }] : []);
@@ -161,8 +171,11 @@ export default function WorkDetail() {
 								<img
 									src={shot.src}
 									alt={shot.alt}
-									width="1400"
-									height="900"
+									/* Real dimensions per shot. These range from 16:9 to
+									   square to tall phone screens, so one hardcoded pair
+									   reserved the wrong box for nearly every image. */
+									width={shot.size?.[0] ?? 1400}
+									height={shot.size?.[1] ?? 900}
 									loading="lazy"
 									decoding="async"
 								/>

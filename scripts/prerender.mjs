@@ -29,7 +29,7 @@ const ROUTES = [
 		path: "/about",
 		title: "About - Anushka Madushanka",
 		description:
-			"Background, experience and skills of Anushka Madushanka, a senior full-stack engineer with 9 years shipping production web and mobile products.",
+			"Background, experience and skills of Anushka Madushanka, a senior full-stack engineer shipping production web and mobile products since 2017.",
 	},
 	{
 		path: "/work/uplist",
@@ -65,6 +65,20 @@ const ROUTES = [
 		description:
 			"A psychological-horror tabletop card battler built solo in Unity 6, where the currency you wager is the time you have left to live. Procedural voice synthesis, adaptive music and an AI that plans against a simulator.",
 		image: "/work/scales-of-faith/match-board.webp",
+	},
+	{
+		path: "/work/hotfixed-to-death",
+		title: "Hotfixed to Death - Anushka Madushanka",
+		description:
+			"A first-person boss fight against a live-service dev team, built solo in Unity 6. Every win ships a hotfix aimed at you, and every patch note is a real balance modifier running in the next fight.",
+		image: "/work/hotfixed-to-death/minions.webp",
+	},
+	{
+		path: "/work/ape-dansala",
+		title: "Ape Dansala - Anushka Madushanka",
+		description:
+			"A Vesak dansala served under pressure: a Unity 6 arcade serving game built solo, with a global leaderboard on Unity Gaming Services. Playable in the browser.",
+		image: "/work/ape-dansala/main-menu.webp",
 	},
 ];
 

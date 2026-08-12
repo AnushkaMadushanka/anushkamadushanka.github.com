@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { HiArrowUpRight } from "react-icons/hi2";
-import { profile, duration, yearsSince } from "../data/profile.js";
+import { profile, duration, yearsPhrase } from "../data/profile.js";
 import { experience, education, skills } from "../data/experience.js";
 import Reveal from "../components/ui/Reveal.jsx";
 import useMeta from "../lib/useMeta.js";
@@ -16,11 +16,16 @@ function label(iso) {
 }
 
 export default function About() {
+	/* Sentence-cased for the heading, since the phrase starts with a lowercase
+	   word ("nearly nine years") on most days of the year. */
+	const span = yearsPhrase();
+	const Span = span.charAt(0).toUpperCase() + span.slice(1);
+
 	/* Its own title, description and canonical, so search engines don't read
 	   this page as a duplicate of the home page. */
 	useMeta({
 		title: `About - ${profile.name}`,
-		description: `Background, experience and skills of ${profile.name}, a senior full-stack engineer with ${yearsSince()} years shipping production web and mobile products.`,
+		description: `Background, experience and skills of ${profile.name}, a senior full-stack engineer with ${span} shipping production web and mobile products.`,
 		path: "/about",
 	});
 
@@ -29,15 +34,13 @@ export default function About() {
 			<div className={`container ${styles.page}`}>
 				<Reveal className={styles.intro}>
 					<p className={styles.eyebrow}>About</p>
-					<h1 className={styles.title}>
-						{yearsSince()} years building products people actually use
-					</h1>
+					<h1 className={styles.title}>{Span} building products people actually use</h1>
 					<div className={styles.introGrid}>
 						<div className={styles.bio}>
 							<p>
-								I’m a full-stack engineer based in {profile.location}. I’ve spent the
-								last five years working remotely with Australian teams — three of them
-								leading development at ShopShare.tv, and since 2024 building{" "}
+								I&#39;m a full-stack engineer based in {profile.location}. I&#39;ve spent the
+								last five years working remotely with Australian teams, nearly four
+								of them leading development at ShopShare.tv, and since 2024 building{" "}
 								<strong>Uplist</strong>, the pre-market property app of Ray White,
 								Australasia&#39;s largest real estate group.
 							</p>

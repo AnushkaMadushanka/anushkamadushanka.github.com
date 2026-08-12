@@ -100,22 +100,27 @@ export const game = {
 		gallery: [
 			{
 				src: `${SHOTS}/wager.webp`,
+				size: [1280, 720],
 				alt: "The wager panel, a contract on the table offering stakes of 6 months, 1 year, 2 years or 5 years of lifespan",
 			},
 			{
 				src: `${SHOTS}/run-map.webp`,
+				size: [1280, 720],
 				alt: "The run map laid out on the table as carved hexagonal tokens joined by red paths, the Collector looming behind",
 			},
 			{
 				src: `${SHOTS}/shop.webp`,
+				size: [1280, 720],
 				alt: "The shop, with ten cards laid out across the table, each priced in lifespan",
 			},
 			{
 				src: `${SHOTS}/slots.webp`,
+				size: [1280, 720],
 				alt: "A slot machine sitting on the table, each pull costing lifespan",
 			},
 			{
 				src: `${SHOTS}/card-removal.webp`,
+				size: [1280, 720],
 				alt: "Card removal, with the whole deck fanned out across the table and up to three cards selectable to burn",
 			},
 		],

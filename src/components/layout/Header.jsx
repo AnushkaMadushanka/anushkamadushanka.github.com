@@ -8,7 +8,7 @@ import styles from "./Header.module.css";
 const NAV = [
 	{ label: "Work", to: "/#work" },
 	{ label: "Experience", to: "/#experience" },
-	{ label: "Game", to: "/#game" },
+	{ label: "Games", to: "/#game" },
 	{ label: "Projects", to: "/#projects" },
 	{ label: "About", to: "/about", route: true },
 ];

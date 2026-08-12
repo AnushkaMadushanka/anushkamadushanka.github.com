@@ -151,10 +151,10 @@ export default function Hero() {
                                 href={profile.links.cv}
                                 target="_blank"
                                 rel="noreferrer"
-                                className={styles.iconLink}
+                                className={`${styles.iconLink} ${styles.cvLink}`}
                             >
                                 <HiOutlineDocumentText aria-hidden="true" />
-                                <span>Résumé</span>
+                                <span>Download résumé</span>
                             </a>
                         </li>
                     </ul>

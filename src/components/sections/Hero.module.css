@@ -209,6 +209,23 @@
 	color: var(--accent);
 }
 
+/* The résumé is the one thing in this row a hiring manager came for, so it
+   reads as an action rather than as a third social profile. */
+.cvLink {
+	color: var(--text-2);
+	font-weight: 600;
+	padding: var(--space-1) var(--space-3);
+	margin: calc(var(--space-1) * -1) calc(var(--space-3) * -1);
+	border: 1px solid var(--border-strong);
+	border-radius: var(--radius-pill);
+}
+
+.cvLink:hover {
+	color: var(--accent);
+	border-color: var(--accent-line);
+	background: var(--accent-quiet);
+}
+
 /* --- portrait ---------------------------------------------------------- */
 .portrait {
 	display: flex;

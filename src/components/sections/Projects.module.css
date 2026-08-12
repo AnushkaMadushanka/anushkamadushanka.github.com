@@ -65,6 +65,32 @@
 	font-size: var(--text-md);
 }
 
+/* --- jam credit -------------------------------------------------------- */
+.jam {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding-left: var(--space-3);
+	border-left: 2px solid var(--accent-line);
+	font-size: var(--text-xs);
+	line-height: 1.4;
+}
+
+.jam a {
+	font-family: var(--font-mono);
+	letter-spacing: 0.04em;
+	color: var(--accent);
+	transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.jam a:hover {
+	opacity: 0.75;
+}
+
+.jamTheme {
+	color: var(--text-3);
+}
+
 .blurb {
 	font-size: var(--text-sm);
 	color: var(--text-2);
@@ -98,6 +124,7 @@
 }
 
 .repoLink,
+.pageLink,
 .demoLink {
 	display: inline-flex;
 	align-items: center;
@@ -107,12 +134,24 @@
 	transition: color var(--dur-fast) var(--ease-out);
 }
 
-.repoLink {
+.repoLink,
+.pageLink {
 	color: var(--text-2);
 }
 
-.repoLink:hover {
+.repoLink:hover,
+.pageLink:hover {
 	color: var(--text);
+}
+
+/* The card's accent slot belongs to the playable build, so the case study sits
+   in the quiet slot where the repo link normally goes. */
+.pageLink svg {
+	transition: transform var(--dur) var(--ease-out);
+}
+
+.pageLink:hover svg {
+	transform: translateX(3px);
 }
 
 .demoLink {

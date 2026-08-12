@@ -78,18 +78,26 @@ export const work = [
 			gallery: [
 				{
 					src: "/work/uplist/feed.webp",
+
+					size: [620, 1262],
 					alt: "The Uplist feed showing a pre-market property in Pymble with photos, bed, bath and car counts, price on application, and the listing agent",
 				},
 				{
 					src: "/work/uplist/listing.webp",
+
+					size: [620, 1261],
 					alt: "A property detail screen for 174 Copeland Road, showing interior photos, a days-remaining countdown, and Enquire and Call actions",
 				},
 				{
 					src: "/work/uplist/map.webp",
+
+					size: [620, 1263],
 					alt: "Map search with properties plotted across a suburb and a contact-agent card for the selected listing",
 				},
 				{
 					src: "/work/uplist/notifications.webp",
+
+					size: [620, 1265],
 					alt: "The notifications screen with alerts for updated properties and new listings in followed suburbs",
 				},
 			],
@@ -151,14 +159,20 @@ export const work = [
 			gallery: [
 				{
 					src: "/work/shopshare-storefront.webp",
+
+					size: [1278, 1279],
 					alt: "A branded ShopShare storefront for the fashion label Ally, showing shopcasts and products",
 				},
 				{
 					src: "/work/shopshare-creator.webp",
+
+					size: [1278, 1279],
 					alt: "A creator profile page on ShopShare showing shopboards and a searchable product grid with prices",
 				},
 				{
 					src: "/work/shopshare-player.webp",
+
+					size: [1280, 960],
 					alt: "The ShopShare player showing a product video alongside a shoppable product rail with buy buttons",
 				},
 			],
@@ -221,10 +235,14 @@ export const work = [
 			gallery: [
 				{
 					src: "/work/shoprecorder-editor.webp",
+
+					size: [1280, 1025],
 					alt: "The ShopRecorder camera bubble over a retailer's product page, with the shoppable product rail building alongside",
 				},
 				{
 					src: "/work/shoprecorder-instore.webp",
+
+					size: [1400, 996],
 					alt: "The ShopRecorder camera bubble overlaid on a live merchant storefront selling children's books",
 				},
 			],
@@ -279,23 +297,26 @@ export const work = [
 			gallery: [
 				{
 					src: "/work/shopcast-library.webp",
+
+					size: [1400, 788],
 					alt: "The Shopcast merchant dashboard showing a grid of draft videos, each with a product thumbnail and creator bubble",
 				},
 				{
 					src: "/work/shopcast-settings.webp",
+
+					size: [1400, 788],
 					alt: "Shopcast settings screen with button text, player theme colour swatches, background colour and open position controls",
 				},
 				{
 					src: "/work/shopcast-analytics.webp",
+
+					size: [1400, 788],
 					alt: "Shopcast video analytics panel showing views, impressions and watch time with a time-series chart",
 				},
 			],
 		},
 	},
 ];
-
-/** Only products with a written case study get a detail page. */
-export const caseStudies = work.filter((w) => w.caseStudy);
 
 export function getWork(slug) {
 	return work.find((w) => w.slug === slug);

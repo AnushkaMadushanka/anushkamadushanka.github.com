@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn, FaItchIo } from "react-icons/fa6";
 import { HiOutlineDocumentText } from "react-icons/hi2";
 import { profile } from "../../data/profile.js";
 import styles from "./Footer.module.css";
@@ -57,6 +57,16 @@ export default function Footer() {
 							aria-label="LinkedIn profile"
 						>
 							<FaLinkedinIn aria-hidden="true" />
+						</a>
+					</li>
+					<li>
+						<a
+							href={profile.links.itch}
+							target="_blank"
+							rel="noreferrer"
+							aria-label="Games on itch.io"
+						>
+							<FaItchIo aria-hidden="true" />
 						</a>
 					</li>
 					<li>

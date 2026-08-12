@@ -1,7 +1,7 @@
 import { useId, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { HiArrowUpRight, HiCheckCircle, HiExclamationTriangle } from "react-icons/hi2";
-import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn, FaItchIo } from "react-icons/fa6";
 import { profile } from "../../data/profile.js";
 import Section from "../ui/Section.jsx";
 import Reveal from "../ui/Reveal.jsx";
@@ -209,6 +209,14 @@ export default function Contact() {
 									<FaGithub aria-hidden="true" /> GitHub
 								</span>
 								<span className={styles.channelValue}>AnushkaMadushanka</span>
+							</a>
+						</li>
+						<li>
+							<a href={profile.links.itch} target="_blank" rel="noreferrer" className={styles.channel}>
+								<span className={styles.channelLabel}>
+									<FaItchIo aria-hidden="true" /> itch.io
+								</span>
+								<span className={styles.channelValue}>anushka-madushanka</span>
 							</a>
 						</li>
 					</ul>

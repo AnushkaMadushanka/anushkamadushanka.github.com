@@ -24,7 +24,10 @@
 	/* --- text ------------------------------------------------------------ */
 	--text: #e7eef3;
 	--text-2: #a3b4c0;
-	--text-3: #6e8090;
+	/* 5.17:1 on --surface-1, the darkest ground this sits on (the metric cards).
+	   The previous #6e8090 measured 4.46:1 there, under the 4.5 floor, and this
+	   token carries small text like the metric captions. */
+	--text-3: #7a8b99;
 
 	/* --- accent ---------------------------------------------------------- */
 	/* One accent, spent deliberately. The old site ran cyan and acid yellow
