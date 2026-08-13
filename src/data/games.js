@@ -41,7 +41,7 @@ export const gameCards = [
 	{
 		name: "Hotfixed to Death",
 		blurb:
-			"A first-person boss fight against a live-service dev team: win a round and they ship a hotfix aimed at you. The patch notes are real. Every line is one of 24 modifiers rolled from a tiered pool, written into a live serialised field, and compounding across all ten rounds.",
+			"A first-person boss fight against a live-service dev team: win a round and they ship a hotfix aimed at you. The patch notes are real. Every line is one of 24 modifiers rolled from a tiered pool, written into a live serialised field, and compounding across all eight rounds.",
 		jam: jams.gameName,
 		tags: ["Unity 6", "C#", "URP", "Game design", "WebGL"],
 		image: "/work/hotfixed-to-death/minions.webp",
@@ -54,7 +54,7 @@ export const gameCards = [
 	{
 		name: "Ape Dansala",
 		blurb:
-			"A Vesak dansala served under pressure: three minutes to give away free soda and ice cream on a Sri Lankan street, from a tray that holds one kind of item at a time. Global leaderboard on Unity Gaming Services, with anonymous sign-in and a Cloud Code name registry.",
+			"A Vesak dansala served under pressure: three minutes to give away free soda and ice cream on a Sri Lankan street, from a tray that holds one kind of item at a time. Global leaderboard on Unity Gaming Services, with anonymous sign-in.",
 		tags: ["Unity 6", "C#", "Unity Gaming Services", "URP", "WebGL"],
 		image: "/work/ape-dansala/main-menu.webp",
 		repo: null,
@@ -87,7 +87,7 @@ export const gameCards = [
 	{
 		name: "Nightmarescape",
 		blurb:
-			"First-person endless runner for mobile, built in Unity with URP and shipped to Google Play.",
+			"First-person endless runner for mobile, built in Unity with URP for Android.",
 		tags: ["Unity", "C#", "URP", "Android"],
 		image: "/projects/nightmarescape.webp",
 		repo: `${GH}/nightmarescape`,
@@ -112,7 +112,7 @@ export const games = [
 		company: "Solo project",
 		year: "2026",
 		summary:
-			"A first-person boss fight against a live-service development team. Every time you win, the devs ship a hotfix, and every hotfix is aimed at you. Ten rounds, ten patches, and the patch notes are real balance changes running in the next fight.",
+			"A first-person boss fight against a live-service development team. Every time you win, the devs ship a hotfix, and every hotfix is aimed at you. Eight rounds, eight patches, and the patch notes are real balance changes running in the next fight.",
 		contribution:
 			"Sole developer: design, engineering, technical art and audio implementation. Built in Unity 6 on URP and published as a browser build.",
 		outcomes: ["Unity 6 · URP · C#", "Playable in the browser"],
@@ -130,16 +130,16 @@ export const games = [
 			facts: [
 				{ label: "Role", value: "Sole developer: design, engineering, technical art, audio" },
 				{ label: "Engine", value: "Unity 6 (6000.3.11f1), URP, C#" },
-				{ label: "Scope", value: "10 rounds, 5 stacking boss phases, 24 balance modifiers" },
+				{ label: "Scope", value: "8 rounds, 6 stacking boss phases, 24 balance modifiers" },
 				{ label: "Built for", value: '$5K GameName Game Jam, theme "Invincible", 343 entries' },
 				{ label: "Status", value: "Playable: full run, death screen and ending are in" },
 			],
 			lede: "A boss fight where the game rewrites its own balance numbers against you between rounds. The joke only works if the patch notes are honest, so every line on the screen is a modifier that was rolled from a pool, written into a real serialised field, and is live in the next fight.",
 
 			metrics: [
-				{ value: "10", label: "Rounds, each with its own patch" },
+				{ value: "8", label: "Rounds, each with its own patch" },
 				{ value: "24", label: "Modifiers in the balance pool" },
-				{ value: "5", label: "Boss phases, stacking" },
+				{ value: "6", label: "Boss phases, stacking" },
 				{ value: "4", label: "Tones the dev team degrades through" },
 			],
 
@@ -155,7 +155,7 @@ export const games = [
 					heading: "Inverting the brief",
 					body: [
 						'It was built for the $5K GameName Game Jam, on the theme "Invincible". The obvious reading is a player who cannot be killed, and most of a jam\'s entries will take a theme at face value.',
-						"This one runs it backwards. You start close to invincible (a boss with 50 HP and a single attack, against a player with full speed and a full magazine) and the game spends ten rounds taking that away from you, one patch at a time. The word ends up describing the thing you used to be.",
+						"This one runs it backwards. You start close to invincible, with a boss on 50 HP and a single attack against a player with full speed and a full magazine, and the game spends eight rounds taking that away from you, one patch at a time. The word ends up describing the thing you used to be.",
 						"Framing it that way also solved the jam's real problem, which is scope. A game about escalating nerfs needs one arena, one boss and one weapon; all the content is in the numbers, and numbers are cheap to author under a deadline.",
 					],
 				},
@@ -186,15 +186,15 @@ export const games = [
 				{
 					heading: "A boss generated at runtime",
 					body: [
-						"Five phases unlock across the ten rounds: a tracking laser, a shield with orbiting weak points, an orbital strike that marks the floor before it drops, deployable drones, proximity mines, and a barrage that sweeps the arena. Once unlocked, an attack is never taken away, and an attack manager shuffles the active set each cycle, so late rounds arrive in an order you cannot memorise.",
+						"Six phases in total. The boss opens with one and unlocks the other five across the eight rounds: a tracking laser, a shield with orbiting weak points, an orbital strike that marks the floor before it drops, deployable drones, proximity mines, and a barrage that sweeps the arena. Once unlocked, an attack is never taken away, and an attack manager shuffles the active set each cycle, so late rounds arrive in an order you cannot memorise.",
 						"The shield, the weak points, the targeting rings, the beams, the mines and the barrage projectiles are all generated and animated at runtime rather than authored as prefabs. That was the only way one person could keep six attacks in play: a new attack is a script, not an art task.",
 					],
 				},
 				{
 					heading: "Writing the antagonist as a schedule",
 					body: [
-						'The other half of the joke is tone. The dev team\'s voice degrades on a fixed timetable: professional through rounds one to three, slightly annoyed through four to six, openly frustrated by seven ("at this point we\'re just nerfing things out of spite"), and defeated by nine ("our analytics show a 0% win rate. Perfectly balanced.").',
-						'Each phase unlock gets its own hand-written note on top of the tone pool, so the shield arrives with an actual explanation of how to fight it. Dying renders the same screen as a fatal error report instead, with a randomly assembled incident write-up and your run stats. Survive all ten rounds and the deploy button changes to "We Give Up": the team cancels the roadmap, reassigns itself to a less stressful project, and asks you to please stop winning.',
+						'The other half of the joke is tone. The dev team\'s voice degrades on a fixed timetable as the run goes on: professional at first, then slightly annoyed, then openly frustrated ("at this point we\'re just nerfing things out of spite"), and finally defeated ("our analytics show a 0% win rate. Perfectly balanced.").',
+						'Each phase unlock gets its own hand-written note on top of the tone pool, so the shield arrives with an actual explanation of how to fight it. Dying renders the same screen as a fatal error report instead, with a randomly assembled incident write-up and your run stats. Survive all eight rounds and the deploy button changes to "We Give Up": the team cancels the roadmap, reassigns itself to a less stressful project, and asks you to please stop winning.',
 					],
 				},
 				{
@@ -259,7 +259,7 @@ export const games = [
 				{ label: "Engine", value: "Unity 6 (6000.3.11f1), URP, C#" },
 				{
 					label: "Backend",
-					value: "Unity Gaming Services: anonymous auth, leaderboards, Cloud Code",
+					value: "Unity Gaming Services: anonymous auth, leaderboards",
 				},
 				{ label: "Status", value: "Playable: full round loop and global leaderboard are in" },
 			],
@@ -313,7 +313,6 @@ export const games = [
 					heading: "A leaderboard that never blocks the game",
 					body: [
 						"Scores are global, backed by Unity Gaming Services. Anonymous sign-in on boot means there is no account to make; each finished round submits to the leaderboard with your display name attached as score metadata, and the menu pulls the top ten alongside your own best and rank.",
-						"Names are claimed through a Cloud Code endpoint that keeps a name-to-player registry in Cloud Save and rejects one that is already taken, so the board does not fill up with duplicates.",
 						"The important part is what happens when any of it fails. Offline, service down or project unlinked, it logs a warning and the game carries on. Nothing about a round depends on the network, which matters more than usual for a browser build that anyone can open from a link.",
 					],
 				},
@@ -335,7 +334,7 @@ export const games = [
 					heading: "Where it stops",
 					body: [
 						"The full round loop, both order types, the tray system, the stats breakdown and the global leaderboard are all in the published build.",
-						"Not in yet: difficulty does not ramp inside a round, since spawn rate and patience are flat for all three minutes, which makes the last minute easier than it should be. There are also only two servable items. The exclusive-name endpoint is written and deployed, but the client still saves names locally rather than calling it.",
+						"Not in yet: difficulty does not ramp inside a round, since spawn rate and patience are flat for all three minutes, which makes the last minute easier than it should be. There are also only two servable items.",
 					],
 				},
 			],
@@ -369,7 +368,7 @@ export const games = [
 			},
 
 			credits:
-				"Low-poly environment, vehicle and character art from Synty Studios; character controller from Unity's Starter Assets. Backing tracks on the stall speakers are karaoke versions of Danno Budunge, Buddhanu Bawena and Budunge Ama Dharme. Design, code and everything else by me.",
+				"Low-poly environment, vehicle and character art from Synty Studios; character controller from Unity's Starter Assets. Backing tracks on the stall speakers are karaoke versions of Danno Budunge, Buddhanu Bawena and Budunge Ama Dharme. Design and direction by me. AI disclosure: AI assisted for code and graphics, matching the disclosure on the itch.io page.",
 		},
 	},
 ];

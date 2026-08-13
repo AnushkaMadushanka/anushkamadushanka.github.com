@@ -117,8 +117,6 @@ export const work = [
 		stack: ["React", "Node.js", "GraphQL", "PostgreSQL", "Sequelize", "AWS"],
 		image: "/work/shopshare-hero.webp",
 		imageSize: [1280, 1031],
-		href: "https://shopshare.tv",
-		hrefLabel: "shopshare.tv",
 		featured: true,
 
 		caseStudy: {
@@ -192,8 +190,6 @@ export const work = [
 		stack: ["Chrome Extensions", "React", "Node.js", "AWS"],
 		image: "/work/shoprecorder-hero.webp",
 		imageSize: [1280, 1025],
-		href: "https://shopshare.tv",
-		hrefLabel: "shopshare.tv",
 		featured: true,
 
 		caseStudy: {
@@ -262,8 +258,6 @@ export const work = [
 		stack: ["React", "Shopify", "Node.js", "GraphQL"],
 		image: "/work/shopcast-hero.webp",
 		imageSize: [1400, 996],
-		href: "https://apps.shopify.com/shopcast-tv",
-		hrefLabel: "Shopify App Store",
 		featured: false,
 
 		caseStudy: {

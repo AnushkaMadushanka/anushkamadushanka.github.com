@@ -16,7 +16,7 @@ export const game = {
 		"A psychological-horror tabletop card battler built solo in Unity 6. You play cards across a cursed table against a soul-collecting clown, and the currency you wager is the time you have left to live.",
 	contribution:
 		"Sole developer: design, engineering, technical art and audio implementation. ~14,200 lines of gameplay C# across 58 scripts, plus custom HLSL shaders and editor tooling.",
-	outcomes: ["Unity 6 · URP · C#", "Playable demo"],
+	outcomes: ["Unity 6 · URP · C#", "Work in progress"],
 	stack: ["Unity 6", "C#", "HLSL", "URP", "DSP audio"],
 	image: `${SHOTS}/match-board.webp`,
 	imageSize: [1280, 720],
@@ -28,7 +28,11 @@ export const game = {
 			{ label: "Role", value: "Sole developer: design, engineering, technical art, audio" },
 			{ label: "Engine", value: "Unity 6 (6000.3.11f1), URP, C#" },
 			{ label: "Scope", value: "~14,200 lines of gameplay C# across 58 scripts" },
-			{ label: "Status", value: "Playable demo: full match loop, run map, tutorial and menus" },
+			{
+				label: "Status",
+				value:
+					"Work in progress: full match loop, run map, tutorial and menus are in. Almost ready for a playable demo, but not quite yet",
+			},
 		],
 		lede: "A card battler where the currency is the time you have left to live. A real clock ticks down while the game is open and persists between sessions. Win a match and it grows, lose and it's gone permanently.",
 		metrics: [],
