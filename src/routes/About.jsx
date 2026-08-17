@@ -63,7 +63,7 @@ export default function About() {
 							</p>
 							<p>
 								I hold a B.Eng. (Hons) in Software Engineering, completed part-time
-								while working full-time. {profile.availability}. If you&#39;re building
+								while working full-time. If you&#39;re building
 								something interesting,{" "}
 								<Link to="/#contact">I&#39;d like to hear about it</Link>.
 							</p>

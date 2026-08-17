@@ -89,7 +89,7 @@ export default function Contact() {
 			id="contact"
 			eyebrow="Contact"
 			title="Let's talk"
-			lede={`${profile.availability}. I'm in ${profile.location} (${profile.timezone}), which overlaps the Australian working day.`}
+			lede={`I'm in ${profile.location} (${profile.timezone}), which overlaps the Australian working day.`}
 		>
 			<div className={styles.layout}>
 				<Reveal className={styles.formWrap}>

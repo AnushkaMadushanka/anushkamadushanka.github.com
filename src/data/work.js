@@ -12,13 +12,9 @@ export const work = [
 		summary:
 			"The pre-market property app of Australasia's largest real estate group. Agents list and share properties before they hit the public market.",
 		contribution:
-			"React Native and TypeScript feature work in a small cross-functional product team, plus the Supabase Postgres behind it: schema, queries and API integration for the core listing workflows.",
-		outcomes: [
-			"33 releases shipped",
-			"93 agents across 10 offices",
-			"324 listings created in pilot",
-		],
-		stack: ["React Native", "TypeScript", "Supabase", "PostgreSQL"],
+			"React Native and TypeScript feature work in a small cross-functional product team, extending into the Supabase Postgres backend where a feature needs it: queries and API integration for the core listing workflows.",
+		outcomes: [],
+		stack: ["React Native", "Expo", "TypeScript", "Supabase", "PostgreSQL"],
 		/* Two shapes for two slots: the featured card's media column is tall and
 		   roughly square, so a 16:10 landscape would be cover-cropped down to
 		   the middle phone. The wide composite is for the case-study hero. */
@@ -43,12 +39,7 @@ export const work = [
 				{ label: "Status", value: "In pilot, on the App Store and Google Play" },
 			],
 			lede: "Most property portals show you a house once it's already public, by which point half the market has seen it. Uplist moves the listing earlier, so agents can share a property before it goes live and buyers can act on it first.",
-			metrics: [
-				{ value: "33", label: "Releases shipped" },
-				{ value: "93", label: "Agents in the pilot" },
-				{ value: "10", label: "Offices" },
-				{ value: "324", label: "Listings created" },
-			],
+			metrics: [],
 
 			sections: [
 				{
@@ -61,15 +52,15 @@ export const work = [
 				{
 					heading: "My part in it",
 					body: [
-						"This is a team product, not mine. I'm one engineer in a small cross-functional group, and the app is the result of everyone in it. What I've contributed is feature work in React Native and TypeScript across 33 releases to the App Store and Google Play.",
-						"I also deliver the backend that goes with those features, on Supabase Postgres: schema design, the queries behind the feed and search, and the API integration for the core listing workflows. Working across both ends means a feature lands as one piece of work rather than being handed across a boundary and negotiated back.",
+						"This is a team product, not mine. I'm one engineer in a small cross-functional group, and the app is the result of everyone in it. What I've contributed is feature work in React Native and TypeScript.",
+						"That work doesn't stop at the app. When a feature needs something from the backend, I add it there too, on Supabase Postgres: the queries behind it and the API integration the app calls. Working across both ends means a feature lands as one piece of work rather than being handed across a boundary and negotiated back.",
 					],
 				},
 				{
 					heading: "Still a pilot",
 					body: [
-						"The app is downloadable from both stores, but it is not a finished public rollout. It's running as a pilot with real agents: 93 of them across 10 offices, and 324 listings created inside the product.",
-						"That distinction matters, because a pre-market tool only works if agents actually put their best properties into it before listing them anywhere else. That's a trust problem as much as a software one. It has to be quick enough to use in the moment and reliable enough to stake a listing on. Getting that right with a real cohort is what the pilot is for.",
+						"The app is downloadable from both stores, but this isn't a finished public rollout. It's a pilot: real agents at Ray White offices, putting real properties into it.",
+						"It only works if agents choose it first, before a good listing goes anywhere else, and that asks for a fair bit of trust. The app has to be quick enough to use in the moment and reliable enough to stake a listing on. The pilot is where that gets tested.",
 					],
 				},
 			],

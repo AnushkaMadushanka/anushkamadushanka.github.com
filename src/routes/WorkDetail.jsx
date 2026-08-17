@@ -211,7 +211,6 @@ export default function WorkDetail() {
 				<div className={`container ${styles.ctaWrap}`}>
 					<div className={styles.cta}>
 						<h2>Building something like this?</h2>
-						<p>{profile.availability}.</p>
 						<Link to="/#contact" className={styles.ctaBtn}>
 							Get in touch
 							<HiArrowUpRight aria-hidden="true" />

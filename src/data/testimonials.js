@@ -6,6 +6,14 @@
  */
 export const testimonials = [
 	{
+		name: "Joel Inteman",
+		title: "Lead Product Designer",
+		company: "Ray White",
+		photo: "/testimonials/joel-inteman.webp",
+		quote:
+			"I worked with Anushka for three years building SHOPSHARE, a startup I founded and we built from the ground up. When I moved to Ray White and an opportunity came up on UpList, I got him on board without a second thought. He takes on the entire stack, ships fast, and cares whether the thing is actually good rather than just finished. He is one of the best engineers I have worked with.",
+	},
+	{
 		name: "Punsisi Kaludewa",
 		title: "Software Engineer",
 		company: "iPay Sri Lanka",

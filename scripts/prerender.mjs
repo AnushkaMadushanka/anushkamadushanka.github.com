@@ -35,7 +35,7 @@ const ROUTES = [
 		path: "/work/uplist",
 		title: "Uplist - Anushka Madushanka",
 		description:
-			"The pre-market property app of Ray White, Australasia's largest real estate group. React Native, TypeScript and Supabase feature work across 33 releases, in a small cross-functional product team.",
+			"The pre-market property app of Ray White, Australasia's largest real estate group. React Native, TypeScript and Supabase feature work, in a small cross-functional product team.",
 		image: "/work/uplist/hero.webp",
 	},
 	{

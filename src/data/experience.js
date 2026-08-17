@@ -14,12 +14,11 @@ export const experience = [
 		blurb:
 			"Building Uplist, the pre-market property app of Australasia's largest real estate group, in a small cross-functional product team.",
 		highlights: [
-			"Shipped 33 releases of Uplist in React Native and TypeScript.",
-			"Delivered backend features on Supabase Postgres alongside the app: schema design, queries and API integration for the core workflows.",
-			"Took the pilot live with 93 agents across 10 offices and 324 listings created, ahead of public launch.",
-			"Covered the app's core flows with React Native Testing Library, catching regressions ahead of release.",
+			"Builds features end to end on Uplist in React Native (Expo) and TypeScript.",
+			"Added backend features on Supabase Postgres: queries and API integration for the core listing workflows.",
+			"Covered core flows with React Native Testing Library so regressions surface before release.",
 		],
-		stack: ["React Native", "TypeScript", "Supabase", "PostgreSQL"],
+		stack: ["React Native", "Expo", "TypeScript", "Supabase", "PostgreSQL"],
 	},
 	{
 		company: "ShopShare.tv",
@@ -68,7 +67,7 @@ export const education = {
 
 export const skills = [
 	{ group: "Languages", items: ["JavaScript", "TypeScript", "Python", "C#", "SQL"] },
-	{ group: "Frontend", items: ["React", "React Native", "Angular", "HTML", "CSS"] },
+	{ group: "Frontend", items: ["React", "React Native", "Expo", "Angular", "HTML", "CSS"] },
 	{ group: "Backend", items: ["Node.js", "GraphQL", "REST APIs", ".NET Web API", "Flask", "Sequelize"] },
 	{ group: "Data", items: ["PostgreSQL", "Supabase", "Microsoft SQL Server", "Firebase"] },
 	{ group: "Testing & CI", items: ["Jest", "React Native Testing Library", "Playwright", "GitHub Actions"] },

@@ -64,7 +64,6 @@ export const profile = {
 	phone: "+94 77 610 5003",
 	location: "Sri Lanka",
 	timezone: "UTC+5:30",
-	availability: "Open to remote roles and Colombo on-site",
 
 	/** The one-line pitch. */
 	tagline:
